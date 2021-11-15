@@ -85,3 +85,8 @@ body {
 }
 /* End feedback */
 
+/* About */
+.about-content {
+  max-width: 600px;
+}
+/* End about */

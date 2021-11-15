@@ -1,4 +1,4 @@
-<base href="http://localhost/periphera/">  <!--  Fix the domain when deploy on the server -->
+<!-- <base href="http://localhost/periphera/">   Fix the domain when deploy on the server -->
 
 <section style="background-color: #EFEFEF;">
   <div class="container py-5 h-100">

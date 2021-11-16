@@ -3,9 +3,11 @@
 class Ajax extends Controller {
 
     public $userModel;
+    public $contactModel;
 
     public function __construct() {
         $this->userModel = $this->model('userModel');
+        $this->contactModel = $this->model('contactModel');
     }
 
     public function regCheckUsername() {
@@ -24,7 +26,12 @@ class Ajax extends Controller {
     public function regCheckEmail() {
         $email = $_POST["email"];
         echo $this->userModel->regCheckEmail($email);
-    }            
+    }
+
+    public function contactCheckEmail() {
+        $email = $_POST["email"];
+        echo $this->contactModel->contactCheckEmail($email);
+    }
 
 }
 

@@ -90,3 +90,12 @@ body {
   max-width: 600px;
 }
 /* End about */
+
+/* Contact form */
+.gradient-custom {
+  background-image: -webkit-linear-gradient(left, #5A4AE3, #59FBDA);
+}
+.contact-content {
+  max-width: 800px;
+}
+/* End contact form */

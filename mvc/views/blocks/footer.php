@@ -49,15 +49,15 @@
         <tbody class="font-weight-normal">
           <tr>
             <td>Mon - Thu:</td>
-            <td>8am - 9pm</td>
+            <td>8am - 5pm</td>
           </tr>
           <tr>
             <td>Fri - Sat:</td>
-            <td>8am - 1am</td>
+            <td>8am - 6pm</td>
           </tr>
           <tr>
             <td>Sunday:</td>
-            <td>9am - 10pm</td>
+            <td>9am - 5pm</td>
           </tr>
         </tbody>
       </table>

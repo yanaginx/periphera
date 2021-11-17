@@ -1,6 +1,7 @@
 <header>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-scroll navbar-dark bg-dark fixed-top">
+  <!-- <nav class="navbar navbar-expand-lg navbar-scroll fixed-top"> -->
     <div class="container-fluid">
       <a class="navbar-brand" href="./home">
         <img style="width: 128px" src="./public/img/logo/logo_white.png" alt="logo_white">

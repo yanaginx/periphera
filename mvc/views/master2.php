@@ -37,14 +37,16 @@
 
 </head>
 <body>
-  <div class="container">
   <!-- nav bar -->
   <?php require_once "./mvc/views/blocks/headerMenu.php"; ?>
+  <!-- Carousel -->
+  <?php require_once "./mvc/views/blocks/carousel.php"; ?>
 
+  <div class="container">
   <!-- Contents -->
   <?php require_once "./mvc/views/pages/".$data["page"].".php"; ?>
-
   </div>
+  
   <!-- Footer -->
   <?php require_once "./mvc/views/blocks/footer.php"; ?>
 

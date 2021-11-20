@@ -8,13 +8,20 @@ class Users extends Controller {
     }
 
     public function sayHi() {
-        // default action is login
-        $this->view("master1", [
+        $info = [
             "title"=>"Sign in",
-            "page"=>"login",
+            "page"=>"login"
+        ];
+        $data = [
+            "username"=>'',
+            "password"=>'',
             "usernameError"=>'',
-            "passwordError"=>'',
-        ]);
+            "passwordError"=>''
+        ];
+        
+        $view_data = $info + $data;
+        // default action is login
+        $this->view("master1", $view_data);
     }
 
     public function login() {

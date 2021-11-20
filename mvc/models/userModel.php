@@ -34,7 +34,10 @@ class UserModel extends DB {
     }
 
     public function login( $username, $password ) {
-        $query = "SELECT username, password, email FROM user WHERE username = ?;";
+        $query = "SELECT username, password, email, role 
+                    FROM `user` JOIN `users_have_roles` ON `user`.id = `user_id`
+                                JOIN `role` ON `role_id` = `role`.id
+                    WHERE username = ?;";
         $stmt = $this->con->prepare($query);
 
         // bind value
@@ -49,7 +52,11 @@ class UserModel extends DB {
             $hashedPassword = $row_data['password'];
 
             if ( password_verify($password, $hashedPassword) ) {
-                return json_encode($row_data['username']);
+                $data = [
+                    'username'=>$row_data['username'],
+                    'role'=>$row_data['role']
+                ];
+                return json_encode($data);
             } else {
                 return false;
             }

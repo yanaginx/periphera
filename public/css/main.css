@@ -1,7 +1,7 @@
 /* Padding body */
 
 body {
-  padding-top:  58.59px;
+  padding-top:  52px;
 }
 /* @media (max-width: 979px) {
   body {
@@ -109,6 +109,18 @@ body {
     height: 100vh;
 }
 
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+  #introCarousel {
+    margin-top: -58.59px;
+  }
+  #introCarousel,
+  .carousel-inner,
+  .carousel-item,
+  .carousel-item.active {
+    height: 50vh;
+  }
+}
 /* End Carousel styling */
 
 

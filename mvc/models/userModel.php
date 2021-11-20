@@ -140,12 +140,10 @@ class UserModel extends DB {
         return $array;
     }
 
-    public function updateUserData($username, $data){
-        $query = "UPDATE INTO user (fname) SET (?) WHERE username = '$username'";
-        $stmt = $this->con->prepare($query);
-        $stmt->bind_param('s', $data['fname']);
-
-        if ( $stmt->execute() ) {
+    public function updateUserData($username, $fname){
+        $sql = "UPDATE user SET VALUE fname = '$fname' WHERE username = '$username' ";
+        $datas = mysqli_query($this->con, $sql);
+        if ($datas) {
             return true;
         } else {
             return false;

@@ -23,44 +23,44 @@
                 <div class="row mt-2">
                     <div class="col-md-6">
                         <label class="label" for="fname">First Name</label>
-                        <input type="text" class="form-control" placeholder="first name" value="<?php echo $data['fname']; ?>">
+                        <input type="text" id="fname" name="fname" class="form-control" placeholder="first name" value="<?php echo $data['fname']; ?>">
                     </div>
                     <div class="col-md-6">
                         <label class="label" for="lname">Last Name</label>
-                        <input type="text" class="form-control" placeholder="last name" value="<?php echo $data['lname']; ?>">
+                        <input type="text" id="lname" name="lname" class="form-control" placeholder="last name" value="<?php echo $data['lname']; ?>">
                     </div>
                 </div>
 
                 <div class="row mt-2">
                     <div class="col-md-6">
                         <label class="label" for="email">Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="email" value="<?php echo $data['email'] ?>">
+                        <input type="email" id="email" name="enmail" class="form-control" placeholder="email" value="<?php echo $data['email'] ?>">
                     </div>
                     <div class="col-md-6">
                         <label class="label" for="phone">Phone Number</label>
-                        <input type="text" class="form-control" placeholder="phone number" value="<?php echo $data['phone']; ?>">
+                        <input type="text" id="phone" name="phone" class="form-control" placeholder="phone number" value="<?php echo $data['phone']; ?>">
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="col-md-6">
                         <label class="label" for="address_1">Address 1</label>
-                        <input type="text" class="form-control" placeholder="address 1" value="<?php echo $data['address_1']; ?>">
+                        <input type="text" id="address_1" name="address_1" class="form-control" placeholder="address 1" value="<?php echo $data['address_1']; ?>">
                     </div>
                     <div class="col-md-6">
-                        <label class="label" for="address_1">Address 2</label>
-                        <input type="text" class="form-control" placeholder="address 2" value="<?php echo $data['address_2']; ?>">
+                        <label class="label" for="address_2">Address 2</label>
+                        <input type="text" id="address_2" name="address_2" class="form-control" placeholder="address 2" value="<?php echo $data['address_2']; ?>">
                     </div>
                 </div>
 
                 <div class="row mt-2">
                     <div class="col-md-6">
                         <label class="label" for="country">Country</label>
-                        <input type="text" name="email" class="form-control" placeholder="country" value="<?php echo $data['country'] ?>">
+                        <input type="text" id="country" name="country" class="form-control" placeholder="country" value="<?php echo $data['country'] ?>">
                     </div>
                     <div class="col-md-6">
                         <label class="label" for="zipcode">Zipcode</label>
-                        <input type="text" class="form-control" placeholder="zip code" value="<?php echo $data['zipcode']; ?>">
+                        <input type="text" id="zipcode" name="zipcode" class="form-control" placeholder="zip code" value="<?php echo $data['zipcode']; ?>">
                     </div>
                 </div>
 

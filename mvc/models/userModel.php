@@ -140,8 +140,17 @@ class UserModel extends DB {
         return $array;
     }
 
-    public function updateUserData($username, $fname){
-        $sql = "UPDATE user SET VALUE fname = '$fname' WHERE username = '$username' ";
+    public function updateUserData($username, $data){
+        $fname = $data['fname'];
+        $lname = $data['lname'];
+        $email = $data['email'];
+        $phone = $data['phone'];
+        $address_1 = $data['address_1'];
+        $address_2 = $data['address_2'];
+        $country = $data['country'];
+        $zipcode = $data['zipcode'];
+        $sql = "UPDATE user SET fname = '$fname', lname = '$lname', email = '$email', phone = '$phone', 
+        address_1 = '$address_1', address_2 = '$address_2', country = '$country', zipcode = '$zipcode' WHERE username = '$username' ";
         $datas = mysqli_query($this->con, $sql);
         if ($datas) {
             return true;

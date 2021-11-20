@@ -129,8 +129,42 @@ class UserModel extends DB {
         return json_encode("confirmPasswd_valid");
     }
 
+    public function getUserData($username){
+        $array = array();
+        $datas = mysqli_query($this->con, "SELECT * FROM user WHERE username = '$username' ");
+        while($row = mysqli_fetch_assoc($datas)){
+            $array['id'] = $row['id'];
+            $array['username'] = $row['username'];
+            $array['fname'] = $row['fname'];
+            $array['lname'] = $row['lname'];
+            $array['email'] = $row['email'];
+            $array['phone'] = $row['phone'];
+            $array['address_1'] = $row['address_1'];
+            $array['address_2'] = $row['address_2'];
+            $array['zipcode'] = $row['zipcode'];
+            $array['country'] = $row['country'];
+        }
+        return $array;
+    }
+
+    public function updateUserData($username, $data){
+        $fname = $data['fname'];
+        $lname = $data['lname'];
+        $email = $data['email'];
+        $phone = $data['phone'];
+        $address_1 = $data['address_1'];
+        $address_2 = $data['address_2'];
+        $country = $data['country'];
+        $zipcode = $data['zipcode'];
+        $sql = "UPDATE user SET fname = '$fname', lname = '$lname', email = '$email', phone = '$phone', 
+        address_1 = '$address_1', address_2 = '$address_2', country = '$country', zipcode = '$zipcode' WHERE username = '$username' ";
+        $datas = mysqli_query($this->con, $sql);
+        if ($datas) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
-
-
 
 ?>

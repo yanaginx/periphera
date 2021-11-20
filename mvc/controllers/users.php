@@ -147,9 +147,9 @@ class Users extends Controller {
 
                 // Check if all the errors are empty
                 if ( empty($data['usernameError']) && 
-                     empty($data['emailError']) && 
-                     empty($data['confirmPasswordError']) && 
-                     empty($data['passwordError']) ) {
+                    empty($data['emailError']) && 
+                    empty($data['confirmPasswordError']) && 
+                    empty($data['passwordError']) ) {
                     
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
@@ -172,7 +172,44 @@ class Users extends Controller {
         $this->view("master1", $view_data);
     }
 
-    
+    public function details() {
+        $info = [
+            "title"=>"Details",
+            "page"=>"details"
+        ];
+
+        $data = [
+            "id"=>'',
+            "username"=>'',
+            "fname"=>'',
+            "lname"=>'',
+            "email"=>'',
+            "phone"=>'',
+            "address_1"=>'',
+            "address_2"=>'',
+            "zipcode"=>'',
+            "country"=>''
+        ];
+
+        if(isset($_POST['saveuser'])){
+            $data = [
+                "username"=> trim($_POST["username"]),
+                "fname"=> trim($_POST["fname"]),
+                "lname"=> trim($_POST["lname"]),
+                "email"=> trim($_POST["email"]),
+                "phone"=> trim($_POST["phone"]),
+                "address_1"=> trim($_POST["address_1"]),
+                "address_2"=> trim($_POST["address_2"]),
+                "zipcode"=> trim($_POST["zipcode"]),
+                "country"=> trim($_POST["country"])
+            ];
+            $this->userModel->updateUserData($_SESSION['username'], $data);
+        }
+
+        $data = $this->userModel->getUserData($_SESSION['username']);
+        $view_data = $info + $data;
+        $this->view("master1", $view_data);
+    }
 }
 
 ?>

@@ -34,6 +34,10 @@
     href="./public/css/main.css"
     rel="stylesheet" 
   />
+  <link 
+    href="./public/css/details.css"
+    rel="stylesheet" 
+  />
 
 </head>
 <body>

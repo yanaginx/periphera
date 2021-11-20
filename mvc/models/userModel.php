@@ -122,8 +122,35 @@ class UserModel extends DB {
         return json_encode("confirmPasswd_valid");
     }
 
+    public function getUserData($username){
+        $array = array();
+        $datas = mysqli_query($this->con, "SELECT * FROM user WHERE username = '$username' ");
+        while($row = mysqli_fetch_assoc($datas)){
+            $array['id'] = $row['id'];
+            $array['username'] = $row['username'];
+            $array['fname'] = $row['fname'];
+            $array['lname'] = $row['lname'];
+            $array['email'] = $row['email'];
+            $array['phone'] = $row['phone'];
+            $array['address_1'] = $row['address_1'];
+            $array['address_2'] = $row['address_2'];
+            $array['zipcode'] = $row['zipcode'];
+            $array['country'] = $row['country'];
+        }
+        return $array;
+    }
+
+    public function updateUserData($username, $data){
+        $query = "UPDATE INTO user (fname) SET (?) WHERE username = '$username'";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('s', $data['fname']);
+
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
-
-
 
 ?>

@@ -49,7 +49,7 @@
               <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdownMenuLink">
                 <!-- <li><a class="dropdown-item" href="#">My profile</a></li> -->
                 <?php if ( isset($_SESSION['username'] )) : ?>
-                  <li><a class="dropdown-item" href="./users/details">Detals</a></li>
+                  <li><a class="dropdown-item" href="./users/details">Details</a></li>
                   <li><a class="dropdown-item" href="./users/logout">Logout</a></li>
                 <?php else : ?>
                   <li><a class="dropdown-item" href="./users/login">Login</a></li>

@@ -26,6 +26,11 @@
     rel="stylesheet" 
   />
 
+  <link 
+    href="./public/css/details.css"
+    rel="stylesheet" 
+  />
+
 </head>
 <body>
   <!-- nav bar -->

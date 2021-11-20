@@ -1,0 +1,45 @@
+:root {
+    --text-color: #525f7f;
+    --background: #f7fafc;
+}
+
+.wrapper {
+    margin: 20px 0;
+}
+
+.profile {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--background) !important;
+}
+
+.infomation {
+    padding: 0 50px 50px 50px;
+}
+
+.label {
+    padding: 10px 0;
+    color: var(--text-color);
+    font-size: 22px;
+}
+
+/* Update Accounters */
+.heading-content {
+    font-weight: bold;
+    font-size: 26px;
+    color: var(--text-color);
+}
+
+/* Button */
+.button {
+    display: flex;
+    margin-top: 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+.save,
+.cancel {
+    border-radius: 20px;
+    margin: 10px;
+}

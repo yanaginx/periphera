@@ -75,8 +75,9 @@ class Users extends Controller {
         $this->view("master1", $view_data);
     }
 
-    public function createUserSessions($user) {
-        $_SESSION['username'] = $user;
+    public function createUserSessions($data) {
+        $_SESSION['username'] = $data['username'];
+        $_SESSION['role'] = $data['role'];
         header('location: ..');
     }
 

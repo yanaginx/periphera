@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="./public/css/cart.css">
+
+<link rel="stylesheet" href="./public/css/products.css">
 
 <div class="small-container" style="margin: 100px 0 ;">
         <?php

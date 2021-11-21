@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="./public/css/products.css">
+<link rel="stylesheet" href="./public/css/cart.css">
 
 <div class="small-container" style="margin: 100px 0 0 0;">
     <div class="d-flex flex-row mb-2 justify-content-between">

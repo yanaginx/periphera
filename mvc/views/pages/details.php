@@ -1,3 +1,8 @@
+<link 
+    href="./public/css/details.css"
+    rel="stylesheet" 
+/>
+
 <div class="m-5">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb justify-content-center">

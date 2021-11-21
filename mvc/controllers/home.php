@@ -5,7 +5,6 @@ class Home extends Controller{
         // Model
     }
 
-
     function sayHi() {
         // add view here
         $this->view("master2", [

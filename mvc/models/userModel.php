@@ -141,8 +141,14 @@ class UserModel extends DB {
 
     public function getUserData($username){
         $array = array();
-        $datas = mysqli_query($this->con, "SELECT * FROM user WHERE username = '$username' ");
-        while($row = mysqli_fetch_assoc($datas)){
+
+        $query = "SELECT * FROM user WHERE username = ?;";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+
+        while($row = $stmt_result->fetch_assoc()){
             $array['id'] = $row['id'];
             $array['username'] = $row['username'];
             $array['fname'] = $row['fname'];
@@ -157,10 +163,26 @@ class UserModel extends DB {
         return $array;
     }
 
-    public function updateUserData($username, $fname){
-        $sql = "UPDATE user SET VALUE fname = '$fname' WHERE username = '$username' ";
-        $datas = mysqli_query($this->con, $sql);
-        if ($datas) {
+    public function updateUserData($username, $data){
+        $fname = $data['fname'];
+        $lname = $data['lname'];
+        $email = $data['email'];
+        $phone = $data['phone'];
+        $address_1 = $data['address_1'];
+        $address_2 = $data['address_2'];
+        $country = $data['country'];
+        $zipcode = $data['zipcode'];
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return false;
+        }
+
+        $query = "UPDATE user SET fname = ?, lname = ?, email = ?, phone = ?, 
+        address_1 = ?, address_2 = ?, country = ?, zipcode = ? WHERE username = ?;";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('sssisssis', $fname, $lname, $email, $phone, $address_1, $address_2, $country, $zipcode, $username);
+
+        if ($stmt->execute()) {
             return true;
         } else {
             return false;

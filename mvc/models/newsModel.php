@@ -17,10 +17,14 @@ class NewsModel extends DB {
     }
 
     public function getArticle($id) {
-        $qr = "SELECT * FROM news WHERE id = $id";
-        $rows = mysqli_query($this->con, $qr);
+        $query = "SELECT * FROM news WHERE id = ?;";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+
         $data_arr = array();
-        while ( $row = mysqli_fetch_assoc($rows) ) {
+        while ( $row = $stmt_result->fetch_assoc() ) {
             $data_arr[] = $row;
         }
         return json_encode($data_arr);

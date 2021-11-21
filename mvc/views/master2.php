@@ -45,8 +45,6 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="./public/css/products.css">
   <link rel="stylesheet" href="./public/css/cart.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
   <div class="container">

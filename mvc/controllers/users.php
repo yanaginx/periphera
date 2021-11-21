@@ -54,7 +54,6 @@ class Users extends Controller {
                  empty($data['passwordError']) ) {
 
                 $loggedInUser = $this->userModel->login($data['username'], $data['password']);
-
                 if ( $loggedInUser ) {
                     $this->createUserSessions( json_decode($loggedInUser, true) );
                 } else {

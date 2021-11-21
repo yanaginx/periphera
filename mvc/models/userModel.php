@@ -27,6 +27,16 @@ class UserModel extends DB {
         $stmt->bind_param('sss', $data['username'], $data['password'], $data['email']);
 
         if ( $stmt->execute() ) {
+            $username = $data['username'];
+            $select_query = mysqli_query($this->con, "SELECT id FROM user WHERE username = '$username'");
+            $get_role_id = mysqli_query($this->con, "SELECT id FROM `role` WHERE `role` = 'user'");
+            $user_id = mysqli_fetch_assoc($select_query);
+            $role_id = mysqli_fetch_assoc($get_role_id);
+            $uid = (int) $user_id['id'];
+            $rid = (int) $role_id['id'];
+            // insert role:
+            $role_query = mysqli_query($this->con, "INSERT INTO `users_have_roles` VALUES ('$uid', '$rid');");
+            // insert into 
             return true;
         } else {
             return false;

@@ -30,19 +30,27 @@ class ProductsModel extends DB {
     }
 
     public function getProductDetail($id){
-        $qr = "SELECT * FROM product WHERE id = $id";
-        $rows =  mysqli_query($this->con, $qr);
+        $qr = "SELECT * FROM product WHERE id = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+
         $data_arr = array();
-        while ( $row = mysqli_fetch_assoc($rows) ) {
+        while ( $row = $stmt_result->fetch_assoc() ) {
             $data_arr[] = $row;
         }
         return json_encode($data_arr);
     }
     public function getUserID($username){
-        $qr = "SELECT id FROM user WHERE username = '$username'";
-        $rows =  mysqli_query($this->con, $qr);
+        $qr = "SELECT id FROM user WHERE username = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+
         $data_arr = array();
-        while ( $row = mysqli_fetch_assoc($rows) ) {
+        while ( $row = $stmt_result->fetch_assoc() ) {
             $data_arr[] = $row;
         }
         return json_encode($data_arr);
@@ -57,8 +65,11 @@ class ProductsModel extends DB {
         return json_encode($data_arr);
     }
     public function productSaveOrder($username) {
-        $query = "INSERT INTO `order`(`user_id`, `date`) VALUES ('$username',DATE(NOW()))";
-        if ( $this->con->query($query)) {
+        $qr = "INSERT INTO `order`(`user_id`, `date`) VALUES (?,DATE(NOW()))";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('s', $username);
+
+        if ( $stmt->execute() ) {
             return true;
         } else {
             return false;
@@ -66,8 +77,11 @@ class ProductsModel extends DB {
     }
 
     public function saveProductMount($orderId, $proId, $proMount) {
-        $query = "INSERT INTO `order_contains_products`(`order_id`, `product_id`, `prod_amount`) VALUES ('$orderId','$proId','$proMount')";
-        if ( $this->con->query($query)) {
+        $qr = "INSERT INTO `order_contains_products`(`order_id`, `product_id`, `prod_amount`) VALUES (?,?,?);";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('iii', $orderId, $proId, $proMount);
+
+        if ( $stmt->execute() ) {
             return true;
         } else {
             return false;
@@ -84,19 +98,28 @@ class ProductsModel extends DB {
     }
 
     public function getCart($userId){
-        $query = "SELECT * FROM `order_contains_products`, `order` o, `product` p WHERE o.id = order_id AND p.id = product_id AND o.user_id = $userId";
-        $rows =  mysqli_query($this->con, $query);
+        $qr = "SELECT * FROM `order_contains_products`, `order` o, `product` p WHERE o.id = order_id AND p.id = product_id AND o.user_id = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+
         $data_arr = array();
-        while ( $row = mysqli_fetch_assoc($rows) ) {
+        while ( $row = $stmt_result->fetch_assoc() ) {
             $data_arr[] = $row;
         }
         return json_encode($data_arr);
     }
 
     public function deleteOrder($orderId){
-        $query = "DELETE FROM `order_contains_products` WHERE order_id = $orderId";
-        $query1 = "DELETE FROM `order` WHERE id = $orderId";
-        if ( $this->con->query($query) && $this->con->query($query1)) {
+        $query = "DELETE FROM `order_contains_products` WHERE order_id = ?;";
+        $query1 = "DELETE FROM `order` WHERE id = ?;";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('i', $orderId);
+        $stmt1 = $this->con->prepare($query1);
+        $stmt1->bind_param('i', $orderId);
+
+        if ( $stmt->execute() && $stmt1->execute() ) {
             return true;
         } else {
             return false;
@@ -104,8 +127,11 @@ class ProductsModel extends DB {
     }
 
     public function updateProdMount($prodMount, $orderId){
-        $query = "UPDATE `order_contains_products` SET `prod_amount`='$prodMount' WHERE order_id=$orderId";
-        if ( $this->con->query($query)) {
+        $query = "UPDATE `order_contains_products` SET `prod_amount`=? WHERE order_id=?";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('ii', $prodMount, $orderId);
+
+        if ( $stmt->execute() ) {
             return true;
         } else {
             return false;

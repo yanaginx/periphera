@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="./public/css/cart.css">
+<link rel="stylesheet" href="./public/css/products.css">
+
 <div class="small-container-col4 cart-page">
     <table>
       <tr>

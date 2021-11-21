@@ -18,6 +18,7 @@ if ( isset($data["article"]) ) {
   foreach ($articles as $article) {
       echo $article["title"] . "<br/>" . "<br/>";
       echo $article["content"] . "<br/>" . "<br/>";
+      echo $article["image"] . "<br/>" . "<br/>";
   }
 }
 ?>

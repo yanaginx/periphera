@@ -1,7 +1,6 @@
 <header>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-scroll navbar-dark bg-dark fixed-top">
-  <!-- <nav class="navbar navbar-expand-lg navbar-scroll fixed-top"> -->
     <div class="container-fluid">
       <a class="navbar-brand" href="./home">
         <img style="width: 128px" src="./public/img/logo/logo_white.png" alt="logo_white">
@@ -33,9 +32,28 @@
         </ul>
         <ul class="navbar-nav d-flex flex-row">
           <li class="nav-item me-3 me-lg-0">
-            <a class="nav-link" href="#">
+            <?php 
+              if(isset($_SESSION["username"])){
+                echo '<a class="nav-link" href="./products/cart">';
+              }
+              else{
+                echo '<a class="nav-link" href="./users/login">';
+              }
+            ?>
+            
               <span><i class="fas fa-shopping-cart"></i></span>
-              <!-- <span class="badge rounded-pill badge-notification bg-danger">1</span> -->
+              <?php 
+                if(isset($_SESSION["username"])){
+                  echo '<span class="badge rounded-pill badge-notification bg-danger">';
+                    if(isset($data["noti"])){
+                    $dataNoti = json_decode($data["noti"], true);
+                    foreach ($dataNoti as $dataNoti){
+                      echo $dataNoti["countID"];
+                    }
+                  } 
+                  echo '</span>';
+                }
+              ?>
             </a>
           </li>
           <li class="nav-item me-3 me-lg-0">
@@ -49,7 +67,7 @@
               <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdownMenuLink">
                 <!-- <li><a class="dropdown-item" href="#">My profile</a></li> -->
                 <?php if ( isset($_SESSION['username'] )) : ?>
-                  <li><a class="dropdown-item" href="./users/details">Details</a></li>
+                  <li><a class="dropdown-item" href="./users/details">Detals</a></li>
                   <li><a class="dropdown-item" href="./users/logout">Logout</a></li>
                 <?php else : ?>
                   <li><a class="dropdown-item" href="./users/login">Login</a></li>

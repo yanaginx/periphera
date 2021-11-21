@@ -34,27 +34,20 @@
     href="./public/css/main.css"
     rel="stylesheet" 
   />
-  <link 
-    href="./public/css/details.css"
-    rel="stylesheet" 
-  />
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="./public/css/products.css">
+  <link rel="stylesheet" href="./public/css/cart.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
+  <div class="container">
   <!-- nav bar -->
   <?php require_once "./mvc/views/blocks/headerMenu.php"; ?>
-  <!-- Carousel -->
-  <?php require_once "./mvc/views/blocks/carousel.php"; ?>
 
-  <div class="container">
   <!-- Contents -->
   <?php require_once "./mvc/views/pages/".$data["page"].".php"; ?>
+
   </div>
-  
   <!-- Footer -->
   <?php require_once "./mvc/views/blocks/footer.php"; ?>
 

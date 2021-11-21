@@ -34,7 +34,7 @@
                 <div class="row mt-2">
                     <div class="col-md-6">
                         <label class="label" for="email">Email</label>
-                        <input type="email" id="email" name="enmail" class="form-control" placeholder="email" value="<?php echo $data['email'] ?>">
+                        <input type="text" id="email" name="email" class="form-control" placeholder="email" value="<?php echo $data['email'] ?>">
                     </div>
                     <div class="col-md-6">
                         <label class="label" for="phone">Phone Number</label>

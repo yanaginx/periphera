@@ -1,0 +1,85 @@
+/* cart.css */
+.cart-page{
+    margin: 80px auto;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+th{
+    text-align: left;
+    padding: 5px;
+    color: white;
+    background-color: #5A4AE3;
+    font-weight: normal;
+}
+
+td{
+    padding: 10px 5px;
+}
+
+td input{
+    height: 30px;
+    width: 40px;
+    padding: 5px;
+}
+
+td a{
+    color: #5A4AE3;
+    font-size: 12px;
+}
+
+td img{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+.total-price{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total-price table{
+    border-top: 3px solid #5A4AE3;
+    max-width: 350px;
+    width: 100%;
+}
+
+td:last-child{
+    text-align: right;
+}
+.btn-remove{
+    border-style: unset;
+    background-color: white;
+    color: #5A4AE3;
+}
+.btn-remove:hover{
+    cursor: pointer;
+    background-color: white;
+    color: #8579f0;
+}
+
+/* -----Media query for less than 600px----- */
+@media only screen and (max-width: 600px) {
+    .cart-info p{
+        display: none;
+    }
+    .btn-remove{
+        border-style: unset;
+        background-color: white;
+        color: #5A4AE3;
+    }
+    .btn-remove:hover{
+        cursor: pointer;
+        background-color: white;
+        color: #8579f0;
+    }
+  }

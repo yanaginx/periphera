@@ -35,16 +35,22 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="./public/css/products.css">
+  <link rel="stylesheet" href="./public/css/cart.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 </head>
 <body>
+  <div class="container">
   <!-- nav bar -->
   <?php require_once "./mvc/views/blocks/headerMenu.php"; ?>
 
-  <div class="container">
   <!-- Contents -->
   <?php require_once "./mvc/views/pages/".$data["page"].".php"; ?>
-  </div>
+
   
+  </div>
   <!-- Footer -->
   <?php require_once "./mvc/views/blocks/footer.php"; ?>
 
@@ -53,7 +59,6 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
   <!-- MDB -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
-  <!-- Lazy load: to use this put img src in data-src attributes nad use class "lazy" -->
-  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.5.0/dist/lazyload.min.js"></script>
+  
 </body>
 </html>

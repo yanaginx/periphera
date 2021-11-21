@@ -8,4 +8,13 @@
             return false;
         }
     }
+
+    function isProductDetail(){
+        if (isset($_SESSION['product_detail'])){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 ?>

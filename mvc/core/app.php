@@ -23,7 +23,8 @@ class App {
         // action process
         if ( isset($arr[1]) ) {
             if ( method_exists($this->controller, $arr[1]) ) {
-                $this->action = $arr[1];
+                if (!($arr[1] == 'model' || $arr[1] == 'view'))
+                    $this->action = $arr[1];
             }
             unset($arr[1]);
         }

@@ -137,6 +137,24 @@ class ProductsModel extends DB {
             return false;
         }
     }
+
+    public function ad_getAllProduct() {
+        $qr = "SELECT `product`.name, `category`.name as category_name, description, date_added, price, rating, is_featured 
+                 FROM `product` JOIN `category` ON category_id = `category`.id;";
+        $rows =  mysqli_query($this->con, $qr);
+        $data_arr = array();
+        while ( $row = mysqli_fetch_assoc($rows) ) {
+            $data_arr[] = $row;
+        }
+        return json_encode($data_arr);        
+    }
+
+    public function ad_createProduct() {
+        // TODO
+    }
+    public function ad_editProduct($id) {
+        // TODO
+    }
 }
 
 ?>

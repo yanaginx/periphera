@@ -84,13 +84,18 @@ class Users extends Controller {
     public function createUserSessions($data) {
         $_SESSION['username'] = $data['username'];
         $_SESSION['role'] = $data['role'];
-        header('location: ..');
+        if ($_SESSION['role'] == 'admin') {
+            header('location: ../admin');
+        }
+        else {
+            header('location: ..');
+        }
     }
 
     public function logout() {
         unset($_SESSION['username']);
         unset($_SESSION['role']);
-        header('location: ./users/login');
+        header('location: ./login');
     }
 
     public function register() {

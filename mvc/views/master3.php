@@ -1,3 +1,10 @@
+<?php
+  if (!isset($_SESSION['role']) || ($_SESSION['role'] != 'admin')) {
+      header('Location: '.URL);
+      exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,18 +43,19 @@
   <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-  <!-- nav bar -->
-  <?php require_once "./mvc/views/blocks/headerMenu.php"; ?>
-  <!-- side bar -->
-  <?php require_once "./mvc/views/blocks/sidebar.php"; ?>
-
-  <div class="container">
-  <!-- Contents -->
-  <?php require_once "./mvc/views/pages/".$data["page"].".php"; ?>
-  </div>
+  <header>
+    <!-- nav bar -->
+    <?php require_once "./mvc/views/blocks/navbar.php"; ?>
+    <!-- side bar -->
+    <?php require_once "./mvc/views/blocks/sidebar.php"; ?>
+  </header>
   
-  <!-- Footer -->
-  <?php require_once "./mvc/views/blocks/footer.php"; ?>
+  <div class="container">
+    <!-- Contents -->
+    <main>
+      <?php require_once "./mvc/views/pages/".$data["page"].".php"; ?>
+    </main>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- <script src="https://kit.fontawesome.com/29945b370d.js" crossorigin="anonymous"></script> -->

@@ -415,3 +415,14 @@ VALUES ('3','Threader Necklet','Marble is a unique material which has been incre
 INSERT INTO `product`(`category_id`, `name`, `description`, `date_added`, `price`, `image`, `rating`, `is_featured`) 
 VALUES ('3','Gold Bird Necklet','Marble is a unique material which has been increasingly re-evaluated not only for its canonical uses in architecture and furniture but also for more particular uses a striking example of its unconventional uses is undoubtedly marble jewelry',
         DATE(NOW()), 15.00,'https://files.catbox.moe/6r0odw.jpg', 3.5, 0);
+
+CREATE TABLE `comment` (
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `comment` text DEFAULT NULL,
+  `datetime` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `comment`
+  ADD CONSTRAINT `fk_contain_user_userid` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_contain_product_prodid` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;

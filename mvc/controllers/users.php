@@ -39,41 +39,44 @@ class Users extends Controller {
         if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             // sanitize post data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                "username"=>trim($_POST['username']),
-                "password"=>trim($_POST['password']),
-                "usernameError"=>'',
-                "passwordError"=>''
-            ];
-            
-            // validate username 
-            if ( empty($data['username']) ) {
-                $data['usernameError'] = 'Please enter a username.';
-            }
-
-            // validate password
-            if ( empty($data['password']) ) {
-                $data['passwordError'] = 'Please enter a password.';
-            }
-
-            // check if all error is empty
-            if ( empty($data['usernameError']) && 
-                 empty($data['passwordError']) ) {
-
-                $loggedInUser = $this->userModel->login($data['username'], $data['password']);
-                if ( $loggedInUser ) {
-                    $this->createUserSessions( json_decode($loggedInUser, true) );
-                } else {
-                    $data['result'] = 'Password or user is incorrect. Please try again.';
-                }
-            } else {
+            if(isset($_POST["username"]) && isset($_POST["password"])){
                 $data = [
-                    "username"=>'',
-                    "password"=>'',
+                    "username"=>trim($_POST['username']),
+                    "password"=>trim($_POST['password']),
                     "usernameError"=>'',
                     "passwordError"=>''
                 ];
+                
+                // validate username 
+                if ( empty($data['username']) ) {
+                    $data['usernameError'] = 'Please enter a username.';
+                }
+    
+                // validate password
+                if ( empty($data['password']) ) {
+                    $data['passwordError'] = 'Please enter a password.';
+                }
+    
+                // check if all error is empty
+                if ( empty($data['usernameError']) && 
+                     empty($data['passwordError']) ) {
+    
+                    $loggedInUser = $this->userModel->login($data['username'], $data['password']);
+                    if ( $loggedInUser ) {
+                        $this->createUserSessions( json_decode($loggedInUser, true) );
+                    } else {
+                        $data['result'] = 'Password or user is incorrect. Please try again.';
+                    }
+                } else {
+                    $data = [
+                        "username"=>'',
+                        "password"=>'',
+                        "usernameError"=>'',
+                        "passwordError"=>''
+                    ];
+                }
             }
+            
         }
 
 

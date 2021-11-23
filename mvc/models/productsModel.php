@@ -138,6 +138,33 @@ class ProductsModel extends DB {
         }
     }
 
+    public function addComment($userId, $proId, $cmt){
+        $qr = "INSERT INTO `comment`(`user_id`, `product_id`, `comment`, `datetime`) VALUES (?,?,?,CURRENT_TIMESTAMP())";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('iis', $userId, $proId, $cmt);
+
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getComment($prodId){
+        $qr = "SELECT `user_id`, `product_id`, `comment`, `datetime`, `username` FROM `comment`, `user` u 
+        WHERE product_id = ? and user_id = u.id
+        order by datetime desc";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('i', $prodId);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+        $data_arr = array();
+        while ( $row = $stmt_result->fetch_assoc() ) {
+            $data_arr[] = $row;
+        }
+        return json_encode($data_arr);  
+    }
+
     public function ad_getAllProduct() {
         $qr = "SELECT `product`.name, `category`.name as category_name, description, date_added, price, rating, is_featured 
                  FROM `product` JOIN `category` ON category_id = `category`.id;";

@@ -50,7 +50,7 @@ $(document).ready(function() {
                 $('#password-invalid').hide();
                 $('#password-validate').hide();
                 $('#password').removeClass('is-invalid');
-            }            
+            }
         });
     });
     $("#confirm-password").on( 'focusout', function() {

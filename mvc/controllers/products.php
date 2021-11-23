@@ -80,7 +80,8 @@ class Products extends Controller {
             "title"=>"Product Detail | Periphera",
             "page"=>"product-detail",
             "data"=>$this->productsModel->getProductDetail($id),
-            "noti"=>$this->productsModel->countNumberProductOfUser()
+            "noti"=>$this->productsModel->countNumberProductOfUser(),
+            "comment"=>$this->productsModel->getComment($id)
         ]);
     }
 
@@ -139,5 +140,27 @@ class Products extends Controller {
         }
         
     }
+
+    public function comment(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $proId =  $_POST['prodID'];
+            $cmt =  $_POST['addCmt'];
+            $userID = $this->productsModel->getUserID($_SESSION["username"]);
+            $data = json_decode($userID, true);
+            foreach($data as $data){
+                $temp = $data["id"];
+            }
+            $this->productsModel->addComment($temp, $proId, $cmt);
+            $this->view("master1", [
+                "title"=>"Product Detail | Periphera",
+                "page"=>"product-detail",
+                "data"=>$this->productsModel->getProductDetail($proId),
+                "noti"=>$this->productsModel->countNumberProductOfUser(),
+                "comment"=>$this->productsModel->getComment($proId)
+            ]);
+        }
+        
+    }
+
 }
 ?>

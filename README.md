@@ -16,7 +16,7 @@ TO DO:
 
 - [ ] Add homepage's layout
 - [x] ~~Add contact us page's layout~~
-- [ ] Add products to database and products page's layout
+- [x] ~~Add products to database and products page's layout~~
 - [ ] Add news' article to database and news page's layout
 - [ ] Add admin control panel for CRUD
 - [ ] More features to come, haven't think of anything else yet

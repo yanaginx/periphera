@@ -5,10 +5,9 @@ class Home extends Controller{
         // Model
     }
 
-
     function sayHi() {
         // add view here
-        $this->view("master1", [
+        $this->view("master2", [
             "title"=>"Periphera | Ecommerce Website",
             "page"=>"home",
         ]);

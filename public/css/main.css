@@ -1,7 +1,7 @@
 /* Padding body */
 
 body {
-  padding-top: 60px;
+  padding-top:  52px;
 }
 /* @media (max-width: 979px) {
   body {
@@ -77,6 +77,7 @@ body {
 .navbar-toggler.collapsed .toggler-icon {
   background-color: #777777;
 }
+
 /* End Nav bar */
 
 /* Feedback */
@@ -99,3 +100,27 @@ body {
   max-width: 800px;
 }
 /* End contact form */
+
+/* Carousel styling */
+#introCarousel,
+.carousel-inner,
+.carousel-item,
+.carousel-item.active {
+    height: 100vh;
+}
+
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+  #introCarousel {
+    margin-top: -58.59px;
+  }
+  #introCarousel,
+  .carousel-inner,
+  .carousel-item,
+  .carousel-item.active {
+    height: 50vh;
+  }
+}
+/* End Carousel styling */
+
+

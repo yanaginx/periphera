@@ -8,13 +8,20 @@ class Users extends Controller {
     }
 
     public function sayHi() {
-        // default action is login
-        $this->view("master1", [
+        $info = [
             "title"=>"Sign in",
-            "page"=>"login",
+            "page"=>"login"
+        ];
+        $data = [
+            "username"=>'',
+            "password"=>'',
             "usernameError"=>'',
-            "passwordError"=>'',
-        ]);
+            "passwordError"=>''
+        ];
+        
+        $view_data = $info + $data;
+        // default action is login
+        $this->view("master1", $view_data);
     }
 
     public function login() {
@@ -32,42 +39,44 @@ class Users extends Controller {
         if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
             // sanitize post data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            $data = [
-                "username"=>trim($_POST['username']),
-                "password"=>trim($_POST['password']),
-                "usernameError"=>'',
-                "passwordError"=>''
-            ];
-            
-            // validate username 
-            if ( empty($data['username']) ) {
-                $data['usernameError'] = 'Please enter a username.';
-            }
-
-            // validate password
-            if ( empty($data['password']) ) {
-                $data['passwordError'] = 'Please enter a password.';
-            }
-
-            // check if all error is empty
-            if ( empty($data['usernameError']) && 
-                 empty($data['passwordError']) ) {
-
-                $loggedInUser = $this->userModel->login($data['username'], $data['password']);
-
-                if ( $loggedInUser ) {
-                    $this->createUserSessions( json_decode($loggedInUser, true) );
-                } else {
-                    $data['result'] = 'Password or user is incorrect. Please try again.';
-                }
-            } else {
+            if(isset($_POST["username"]) && isset($_POST["password"])){
                 $data = [
-                    "username"=>'',
-                    "password"=>'',
+                    "username"=>trim($_POST['username']),
+                    "password"=>trim($_POST['password']),
                     "usernameError"=>'',
                     "passwordError"=>''
                 ];
+                
+                // validate username 
+                if ( empty($data['username']) ) {
+                    $data['usernameError'] = 'Please enter a username.';
+                }
+    
+                // validate password
+                if ( empty($data['password']) ) {
+                    $data['passwordError'] = 'Please enter a password.';
+                }
+    
+                // check if all error is empty
+                if ( empty($data['usernameError']) && 
+                     empty($data['passwordError']) ) {
+    
+                    $loggedInUser = $this->userModel->login($data['username'], $data['password']);
+                    if ( $loggedInUser ) {
+                        $this->createUserSessions( json_decode($loggedInUser, true) );
+                    } else {
+                        $data['result'] = 'Password or user is incorrect. Please try again.';
+                    }
+                } else {
+                    $data = [
+                        "username"=>'',
+                        "password"=>'',
+                        "usernameError"=>'',
+                        "passwordError"=>''
+                    ];
+                }
             }
+            
         }
 
 
@@ -75,14 +84,21 @@ class Users extends Controller {
         $this->view("master1", $view_data);
     }
 
-    public function createUserSessions($user) {
-        $_SESSION['username'] = $user;
-        header('location: ..');
+    public function createUserSessions($data) {
+        $_SESSION['username'] = $data['username'];
+        $_SESSION['role'] = $data['role'];
+        if ($_SESSION['role'] == 'admin') {
+            header('location: ../admin');
+        }
+        else {
+            header('location: ..');
+        }
     }
 
     public function logout() {
         unset($_SESSION['username']);
-        header('location: ./users/login');
+        unset($_SESSION['role']);
+        header('location: ./login');
     }
 
     public function register() {
@@ -147,9 +163,9 @@ class Users extends Controller {
 
                 // Check if all the errors are empty
                 if ( empty($data['usernameError']) && 
-                     empty($data['emailError']) && 
-                     empty($data['confirmPasswordError']) && 
-                     empty($data['passwordError']) ) {
+                    empty($data['emailError']) && 
+                    empty($data['confirmPasswordError']) && 
+                    empty($data['passwordError']) ) {
                     
                     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
@@ -172,7 +188,43 @@ class Users extends Controller {
         $this->view("master1", $view_data);
     }
 
-    
+    public function details() {
+        $info = [
+            "title"=>"Details",
+            "page"=>"details"
+        ];
+
+        $data = [
+            "id"=>'',
+            "username"=>'',
+            "fname"=>'',
+            "lname"=>'',
+            "email"=>'',
+            "phone"=>'',
+            "address_1"=>'',
+            "address_2"=>'',
+            "zipcode"=>'',
+            "country"=>''
+        ];
+
+        if(isset($_POST['saveuser'])){
+            $data = [
+                "fname" => $_POST['fname'],
+                "lname" => $_POST['lname'],
+                "email" => $_POST['email'],
+                "phone" => $_POST['phone'],
+                "address_1" => $_POST['address_1'],
+                "address_2" => $_POST['address_2'],
+                "zipcode" => $_POST['zipcode'],
+                "country" => $_POST['country']
+            ];
+            $this->userModel->updateUserData($_SESSION['username'], $data);
+        }
+
+        $data = $this->userModel->getUserData($_SESSION['username']);
+        $view_data = $info + $data;
+        $this->view("master1", $view_data);
+    }
 }
 
 ?>

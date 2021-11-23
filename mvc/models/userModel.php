@@ -27,6 +27,16 @@ class UserModel extends DB {
         $stmt->bind_param('sss', $data['username'], $data['password'], $data['email']);
 
         if ( $stmt->execute() ) {
+            $username = $data['username'];
+            $select_query = mysqli_query($this->con, "SELECT id FROM user WHERE username = '$username'");
+            $get_role_id = mysqli_query($this->con, "SELECT id FROM `role` WHERE `role` = 'user'");
+            $user_id = mysqli_fetch_assoc($select_query);
+            $role_id = mysqli_fetch_assoc($get_role_id);
+            $uid = (int) $user_id['id'];
+            $rid = (int) $role_id['id'];
+            // insert role:
+            $role_query = mysqli_query($this->con, "INSERT INTO `users_have_roles` VALUES ('$uid', '$rid');");
+            // insert into 
             return true;
         } else {
             return false;
@@ -34,7 +44,10 @@ class UserModel extends DB {
     }
 
     public function login( $username, $password ) {
-        $query = "SELECT username, password, email FROM user WHERE username = ?;";
+        $query = "SELECT username, password, email, role 
+                    FROM `user` JOIN `users_have_roles` ON `user`.id = `user_id`
+                                JOIN `role` ON `role_id` = `role`.id
+                    WHERE username = ?;";
         $stmt = $this->con->prepare($query);
 
         // bind value
@@ -49,7 +62,11 @@ class UserModel extends DB {
             $hashedPassword = $row_data['password'];
 
             if ( password_verify($password, $hashedPassword) ) {
-                return json_encode($row_data['username']);
+                $data = [
+                    'username'=>$row_data['username'],
+                    'role'=>$row_data['role']
+                ];
+                return json_encode($data);
             } else {
                 return false;
             }
@@ -122,8 +139,55 @@ class UserModel extends DB {
         return json_encode("confirmPasswd_valid");
     }
 
+    public function getUserData($username){
+        $array = array();
+
+        $query = "SELECT * FROM user WHERE username = ?;";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $stmt_result = $stmt->get_result();
+
+        while($row = $stmt_result->fetch_assoc()){
+            $array['id'] = $row['id'];
+            $array['username'] = $row['username'];
+            $array['fname'] = $row['fname'];
+            $array['lname'] = $row['lname'];
+            $array['email'] = $row['email'];
+            $array['phone'] = $row['phone'];
+            $array['address_1'] = $row['address_1'];
+            $array['address_2'] = $row['address_2'];
+            $array['zipcode'] = $row['zipcode'];
+            $array['country'] = $row['country'];
+        }
+        return $array;
+    }
+
+    public function updateUserData($username, $data){
+        $fname = $data['fname'];
+        $lname = $data['lname'];
+        $email = $data['email'];
+        $phone = $data['phone'];
+        $address_1 = $data['address_1'];
+        $address_2 = $data['address_2'];
+        $country = $data['country'];
+        $zipcode = $data['zipcode'];
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return false;
+        }
+
+        $query = "UPDATE user SET fname = ?, lname = ?, email = ?, phone = ?, 
+        address_1 = ?, address_2 = ?, country = ?, zipcode = ? WHERE username = ?;";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('sssisssis', $fname, $lname, $email, $phone, $address_1, $address_2, $country, $zipcode, $username);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
-
-
 
 ?>

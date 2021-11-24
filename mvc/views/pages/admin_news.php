@@ -33,8 +33,8 @@
         echo '<td>'.$row['title'].'</td>';
         echo '<td class="col-3">';
         echo '<input type="hidden" value='.$row["id"]." />";
-        echo '<a data-mdb-toggle="modal" data-mdb-target="#editModal"><i class="fas fa-pencil-alt text-warning fa-1x mx-2 edit-btn"></i></a>';
-        echo '<a data-mdb-toggle="modal" data-mdb-target="#deleteModal"><i class="fas fa-trash-alt text-danger fa-1x mx-2 del-btn"></i></a>';
+        echo '<a data-mdb-toggle="modal" class="edit-btn" data-mdb-target="#editModal"><i class="fas fa-pencil-alt text-warning fa-1x mx-2"></i></a>';
+        echo '<a data-mdb-toggle="modal" class="del-btn" data-mdb-target="#deleteModal"><i class="fas fa-trash-alt text-danger fa-1x mx-2"></i></a>';
         echo '</td>';
         echo '</tr>';
     }
@@ -198,8 +198,6 @@ $(document).ready(function() {
         $td = $(this).closest("td");
         var newsId = $td.children("input").val();
         $("#newsId-edit").val(newsId);
-        console.log(newsId);
-        console.log($("#newsId-edit").val());
     });
     $(".del-btn").on("click", function() {
         $td = $(this).closest("td");

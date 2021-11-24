@@ -8,6 +8,7 @@ class Admin extends Controller {
     public function __construct() {
         $this->userModel = $this->model('userModel');
         $this->productsModel = $this->model('productsModel');
+        $this->newsModel = $this->model('newsModel');
     }
 
     public function sayHi() {
@@ -70,6 +71,12 @@ class Admin extends Controller {
         ];
         $data = [];
 
+        // fetching all product data
+        $qr_res = json_decode($this->newsModel->ad_getAllArticles(), true);
+
+        $data = [
+            "qr_res"=>$qr_res
+        ];
         
         $view_data = $info + $data;
         $this->view("master3", $view_data);

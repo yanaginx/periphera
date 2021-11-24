@@ -29,6 +29,52 @@ class NewsModel extends DB {
         }
         return json_encode($data_arr);
     }
+
+    public function ad_getAllArticles() {
+        $qr = "SELECT id, title, content FROM `news`;";
+        $rows =  mysqli_query($this->con, $qr);
+        $data_arr = array();
+        while ( $row = mysqli_fetch_assoc($rows) ) {
+            $data_arr[] = $row;
+        }
+        return json_encode($data_arr);        
+    }
+
+    public function ad_addArticle($title, $content, $image){
+        $qr = "INSERT INTO `news`(`title`, `content`, `image`) VALUES (?,?,?)";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('sss', $title, $content, $image);
+
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function ad_editArticle($newsId, $title, $content, $image){
+        $qr = "UPDATE `news` SET `title`=?, `content`=?, `image`=? WHERE id = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('sssi', $title, $content, $image, $newsId);
+
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function ad_deleteArticle($newsId){
+        $qr = "DELETE FROM `news` WHERE id = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('i', $newsId);
+
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

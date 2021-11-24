@@ -166,7 +166,7 @@ class ProductsModel extends DB {
     }
 
     public function ad_getAllProduct() {
-        $qr = "SELECT `product`.name, `category`.name as category_name, description, date_added, price, rating, is_featured 
+        $qr = "SELECT `product`.name, `category`.name as category_name, description, date_added, price, rating, is_featured, `product`.id, `product`.image
                  FROM `product` JOIN `category` ON category_id = `category`.id;";
         $rows =  mysqli_query($this->con, $qr);
         $data_arr = array();
@@ -176,11 +176,40 @@ class ProductsModel extends DB {
         return json_encode($data_arr);        
     }
 
-    public function ad_createProduct() {
-        // TODO
+    public function ad_createProduct($category, $name, $description, $price, $image, $rating, $isFeatured) {
+        $qr = "INSERT INTO `product`(`category_id`, `name`, `description`, `date_added`, `price`, `image`, `rating`, `is_featured`) 
+            VALUES (?,?,?,
+            CURRENT_TIMESTAMP(), ?,?, ?, ?);";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('sssisii', $category, $name, $description, $price, $image, $rating, $isFeatured);
+
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    public function ad_editProduct($id) {
-        // TODO
+    public function ad_editProduct($id, $category, $name, $des, $price, $image, $rating, $feature) {
+        $query = "UPDATE `product` SET `category_id`=?,`name`=?,`description`=?,`price`=?,`image`=?,`rating`=?,`is_featured`=? WHERE id = ?";
+        $stmt = $this->con->prepare($query);
+        $stmt->bind_param('ssssssss', $category, $name, $des, $price, $image, $rating, $feature, $id);
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function ad_deleteProduct($id){
+        $qr = "DELETE FROM `product` WHERE id = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('i', $id);
+
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

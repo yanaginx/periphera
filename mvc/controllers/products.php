@@ -223,5 +223,55 @@ class Products extends Controller {
         
     }
 
+    public function ad_add_product(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $category =  $_POST['category'];
+            $name =  $_POST['name'];
+            $description = $_POST['description'];
+            $price =  $_POST['price'];
+            $img = $_POST['image'];
+            $rating =  $_POST['rating'];
+            $feature = $_POST['isFeatured'];
+            echo $feature;
+            $this->productsModel->ad_createProduct($category, $name, $description, $price, $img, $rating, $feature);
+            $this->view("master3", [
+                "title"=>"Dashboard | Products",
+                "page"=>"admin_products",
+                "qr_res"=>json_decode($this->productsModel->ad_getAllProduct(), true)
+            ]);
+        }
+    }
+
+    public function ad_edit_product(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id = $_POST['productId'];
+            $category =  $_POST['category1'];
+            $name =  $_POST['name1'];
+            $description = $_POST['description1'];
+            $price =  $_POST['price1'];
+            $img = $_POST['image1'];
+            $rating =  $_POST['rating1'];
+            $feature = $_POST['isFeatured1'];
+            $this->productsModel->ad_editProduct($id, $category, $name, $description, $price, $img, $rating, $feature);
+            $this->view("master3", [
+                "title"=>"Dashboard | Products",
+                "page"=>"admin_products",
+                "qr_res"=>json_decode($this->productsModel->ad_getAllProduct(), true)
+            ]);
+        }
+    }
+
+    public function ad_delete_product(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id = $_POST['productIdDelete'];
+            $this->productsModel->ad_deleteProduct($id);
+            $this->view("master3", [
+                "title"=>"Dashboard | Products",
+                "page"=>"admin_products",
+                "qr_res"=>json_decode($this->productsModel->ad_getAllProduct(), true)
+            ]);
+        }
+    }
+
 }
 ?>

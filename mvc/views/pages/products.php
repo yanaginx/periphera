@@ -1,17 +1,41 @@
 <link rel="stylesheet" href="./public/css/products.css">
 <link rel="stylesheet" href="./public/css/cart.css">
+<script>
+  function setCookie(cookieName, cookieValue) {
+    document.cookie = cookieName+"="+String(cookieValue);
+}
+</script>
 
 <div class="small-container" style="margin: 100px 0 0 0;">
     <div class="d-flex flex-row mb-2 justify-content-between">
       <div class="p-2 article__title"><h2>All Products</h2></div>
       <div class="p-2 ">
-        <form action="./products" method="post">
-          <select name="sort" id="sort" onchange='if(form.value != "0"){form.submit()}'>
-              <option value='0'>Default Sorting</option>
-              <option value='1'>Sort by price</option>
-              <option value='2'>Sort by rating</option>
-          </select></div>
+        <?php if($data["numberPage"] == 1){
+        ?>
+        <form action="./products" method="post" id="formselect">
+          <select name="sort" id="sort" onchange='  setCookie("formselected", document.getElementById("sort").value);
+                                                    document.getElementById("formselect").submit();'>
+              <?php
+                if($_COOKIE['formselected'] == 0){
+                  echo '<option value="0" selected>Default Sorting</option>';
+                  echo '<option value="1" >Sort by price</option>';
+                  echo '<option value="2">Sort by rating</option>';
+                }
+                if($_COOKIE['formselected'] == 1){
+                  echo '<option value="0">Default Sorting</option>';
+                  echo '<option value="1" selected>Sort by price</option>';
+                  echo '<option value="2">Sort by rating</option>';
+                }
+                if($_COOKIE['formselected'] == 2){
+                  echo '<option value="0">Default Sorting</option>';
+                  echo '<option value="1" >Sort by price</option>';
+                  echo '<option value="2" selected>Sort by rating</option>';
+                }
+              ?>
+          </select>
         </form>
+        <?php } ?>
+      </div>
         
     </div>
         <?php

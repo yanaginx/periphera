@@ -28,15 +28,45 @@ class Products extends Controller {
                     "noti"=>$this->productsModel->countNumberProductOfUser()
                 ]);
             }
+            else if($_POST['sort'] == 0){
+                $data = $this->productsModel->getData();
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>1,
+                    "data"=>$data,
+                    "noti"=>$this->productsModel->countNumberProductOfUser()
+                ]);
+            }
         }
         else{
-            $this->view("master1", [
-                "title"=>"Products | Periphera",
-                "page"=>"products",
-                "numberPage"=>1,
-                "data"=>$this->productsModel->getData(),
-                "noti"=>$this->productsModel->countNumberProductOfUser()
-            ]);
+            if(isset($_COOKIE['formselected'])){
+                if($_COOKIE['formselected'] == 0){
+                    $data = $this->productsModel->getData();
+                }
+                if($_COOKIE['formselected'] == 1){
+                    $data = $this->productsModel->getDataSortByPrice();
+                }
+                if($_COOKIE['formselected'] == 2){
+                    $data = $this->productsModel->getDataSortByRating();
+                }
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>1,
+                    "data"=>$data,
+                    "noti"=>$this->productsModel->countNumberProductOfUser()
+                ]);
+            }
+            else{
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>1,
+                    "data"=>$this->productsModel->getData(),
+                    "noti"=>$this->productsModel->countNumberProductOfUser()
+                ]);
+            }
         }
         
     }
@@ -63,15 +93,45 @@ class Products extends Controller {
                     "noti"=>$this->productsModel->countNumberProductOfUser()
                 ]);
             }
+            else if($_POST['sort'] == 0){
+                $data = $this->productsModel->getData();
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>"".$page,
+                    "data"=>$data,
+                    "noti"=>$this->productsModel->countNumberProductOfUser()
+                ]);
+            }
         }
         else{
-            $this->view("master1", [
-                "title"=>"Products | Periphera",
-                "page"=>"products",
-                "numberPage"=>"".$page,
-                "data"=>$this->productsModel->getData(),
-                "noti"=>$this->productsModel->countNumberProductOfUser()
-            ]);
+            if(isset($_COOKIE['formselected'])){
+                if($_COOKIE['formselected'] == 0){
+                    $data = $this->productsModel->getData();
+                }
+                if($_COOKIE['formselected'] == 1){
+                    $data = $this->productsModel->getDataSortByPrice();
+                }
+                if($_COOKIE['formselected'] == 2){
+                    $data = $this->productsModel->getDataSortByRating();
+                }
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>"".$page,
+                    "data"=>$data,
+                    "noti"=>$this->productsModel->countNumberProductOfUser()
+                ]);
+            }
+            else{
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>"".$page,
+                    "data"=>$this->productsModel->getData(),
+                    "noti"=>$this->productsModel->countNumberProductOfUser()
+                ]);
+            }
         }
     }
 
@@ -101,6 +161,7 @@ class Products extends Controller {
                 "title"=>"Product Detail | Periphera",
                 "page"=>"product-detail",
                 "data"=>$this->productsModel->getProductDetail($_POST["idProduct"]),
+                "comment"=>$this->productsModel->getComment($_POST["idProduct"]),
                 "noti"=>$this->productsModel->countNumberProductOfUser()
             ]);
         }

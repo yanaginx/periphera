@@ -32,7 +32,9 @@
         echo '<tr>';
         echo '<td>'.$row['title'].'</td>';
         echo '<td class="col-3">';
-        echo '<input type="hidden" value='.$row["id"]." />";
+        echo '<input id="hidden-id" type="hidden" value='.$row["id"]." />";
+        echo '<input id="hidden-content" type="hidden" value="'.$row["content"].'" />';
+        echo '<a data-mdb-toggle="modal" class="view-btn" data-mdb-target="#viewModal"><i class="fas fa-search text-warning fa-1x mx-2"></i></a>';
         echo '<a data-mdb-toggle="modal" class="edit-btn" data-mdb-target="#editModal"><i class="fas fa-pencil-alt text-warning fa-1x mx-2"></i></a>';
         echo '<a data-mdb-toggle="modal" class="del-btn" data-mdb-target="#deleteModal"><i class="fas fa-trash-alt text-danger fa-1x mx-2"></i></a>';
         echo '</td>';
@@ -43,6 +45,40 @@
     echo '</div>';
   }
 ?>
+
+<!-- View Modal -->
+<div
+  class="modal fade"
+  id="viewModal"
+  tabindex="-1"
+  aria-labelledby="createModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Content</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-mdb-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-content" id="news-content"></p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 <!-- Create Modal -->
 <div
@@ -194,14 +230,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script id="tmp">
 $(document).ready(function() {
+    $(".view-btn").on("click", function() {
+        $td = $(this).closest("td");
+        var data = $td.children("#hidden-content").val();
+        $("#news-content").text(data);
+    });
     $(".edit-btn").on("click", function() {
         $td = $(this).closest("td");
-        var newsId = $td.children("input").val();
+        var newsId = $td.children("#hidden-id").val();
         $("#newsId-edit").val(newsId);
     });
     $(".del-btn").on("click", function() {
         $td = $(this).closest("td");
-        var newsId = $td.children("input").val();
+        var newsId = $td.children("#hidden-id").val();
         $("#newsId-del").val(newsId);
     });
 });

@@ -59,6 +59,19 @@ class Contact extends Controller {
         $view_data = $info + $data;
         $this->view("master1", $view_data);
     }
+
+    public function ad_Delete(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $msgId =  $_POST['msgId'];
+
+            $this->contactModel->ad_deleteMessage($msgId);
+            $this->view("master3", [
+                "title"=>"Dashboard | Messages",
+                "page"=>"admin_messages",
+                "qr_res"=>json_decode($this->contactModel->ad_getAllMessages(), true)
+            ]);
+        }
+    }
 }
 
 ?>

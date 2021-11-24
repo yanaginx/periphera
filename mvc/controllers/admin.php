@@ -9,6 +9,7 @@ class Admin extends Controller {
         $this->userModel = $this->model('userModel');
         $this->productsModel = $this->model('productsModel');
         $this->newsModel = $this->model('newsModel');
+        $this->contactModel = $this->model('contactModel');
     }
 
     public function sayHi() {
@@ -47,6 +48,12 @@ class Admin extends Controller {
         ];
         $data = [];
 
+        // fetching all user data
+        $qr_res = json_decode($this->userModel->ad_getAllUsers(), true);
+
+        $data = [
+            "qr_res"=>$qr_res
+        ];
         
         $view_data = $info + $data;
         $this->view("master3", $view_data);
@@ -71,7 +78,7 @@ class Admin extends Controller {
         ];
         $data = [];
 
-        // fetching all product data
+        // fetching all news data
         $qr_res = json_decode($this->newsModel->ad_getAllArticles(), true);
 
         $data = [
@@ -88,6 +95,13 @@ class Admin extends Controller {
             "page"=>"admin_messages"
         ];
         $data = [];
+
+        // fetching all contact data
+        $qr_res = json_decode($this->contactModel->ad_getAllMessages(), true);
+
+        $data = [
+            "qr_res"=>$qr_res
+        ];
 
         
         $view_data = $info + $data;

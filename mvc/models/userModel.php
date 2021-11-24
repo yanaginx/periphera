@@ -188,6 +188,32 @@ class UserModel extends DB {
             return false;
         }
     }
+
+    public function ad_getAllUsers() {
+        $qr = "SELECT id, username, email, address_1, address_2, zipcode, country, fname, lname, phone FROM `user`;";
+        $rows =  mysqli_query($this->con, $qr);
+        $data_arr = array();
+        while ( $row = mysqli_fetch_assoc($rows) ) {
+            $data_arr[] = $row;
+        }
+        return json_encode($data_arr);        
+    }
+
+    public function ad_deleteUser($userId){
+        $qr = "DELETE FROM `user` WHERE id = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('i', $userId);
+
+        $qr2 = "DELETE FROM `users_have_roles` WHERE user_id = ?;";
+        $stmt2 = $this->con->prepare($qr2);
+        $stmt2->bind_param('i', $userId);
+
+        if ( $stmt->execute() && $stmt2->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

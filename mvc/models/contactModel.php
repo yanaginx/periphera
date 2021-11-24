@@ -40,6 +40,28 @@ class ContactModel extends DB {
             return false;
         }
     }
+
+    public function ad_getAllMessages() {
+        $qr = "SELECT id, content, fname, lname, email FROM `message`;";
+        $rows =  mysqli_query($this->con, $qr);
+        $data_arr = array();
+        while ( $row = mysqli_fetch_assoc($rows) ) {
+            $data_arr[] = $row;
+        }
+        return json_encode($data_arr);        
+    }
+
+    public function ad_deleteMessage($msgId){
+        $qr = "DELETE FROM `message` WHERE id = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('i', $msgId);
+
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 

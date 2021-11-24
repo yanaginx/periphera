@@ -51,7 +51,7 @@
   class="modal fade"
   id="viewModal"
   tabindex="-1"
-  aria-labelledby="createModalLabel"
+  aria-labelledby="viewModalLabel"
   aria-hidden="true"
 >
   <div class="modal-dialog">
@@ -66,7 +66,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        <p class="modal-content" id="news-content"></p>
+        <div class="modal-content text-wrap" id="news-content"></div>
       </div>
 
       <div class="modal-footer">

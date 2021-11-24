@@ -225,6 +225,19 @@ class Users extends Controller {
         $view_data = $info + $data;
         $this->view("master1", $view_data);
     }
+
+    public function ad_Delete(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $userId =  $_POST['userId'];
+
+            $this->userModel->ad_deleteUser($userId);
+            $this->view("master3", [
+                "title"=>"Dashboard | Users",
+                "page"=>"admin_users",
+                "qr_res"=>json_decode($this->userModel->ad_getAllUsers(), true)
+            ]);
+        }
+    }
 }
 
 ?>

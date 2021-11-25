@@ -87,8 +87,8 @@ class ProductsModel extends DB {
             return false;
         }
     }
-    public function countNumberProductOfUser(){
-        $query = "SELECT COUNT(user_id) AS countID FROM `order` WHERE 1";
+    public function countNumberProductOfUser($userId){
+        $query = "SELECT COUNT(user_id) AS countID FROM `order` WHERE user_id = $userId";
         $rows =  mysqli_query($this->con, $query);
         $data_arr = array();
         while ( $row = mysqli_fetch_assoc($rows) ) {

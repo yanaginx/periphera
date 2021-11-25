@@ -485,7 +485,7 @@ class Products extends Controller {
             $this->view("master3", [
                 "title"=>"Dashboard | Comments",
                 "page"=>"admin_comments",
-                "qr_res"=>json_decode($this->productModel->ad_getAllComments(), true)
+                "qr_res"=>json_decode($this->productsModel->ad_getAllComments(), true)
             ]);
         }
     }

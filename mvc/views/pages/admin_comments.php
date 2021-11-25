@@ -92,8 +92,8 @@
         ></button>
       </div>
 
-      <form method="post" action="./contact/ad_Delete" id="form-delete-msg">
-      <input type="hidden" id="msgId" name="msgId" />
+      <form method="post" action="./products/ad_delete_comment" id="form-delete-msg">
+      <input type="hidden" id="cmtId" name="cmtId" />
       <div class="modal-body">					
         <p>Are you sure you want to delete this record?</p>
         <p class="text-warning"><small>This action cannot be undone.</small></p>
@@ -121,8 +121,8 @@ $(document).ready(function() {
     });
     $(".del-btn").on("click", function() {
         $td = $(this).closest("td");
-        var msgId = $td.children("#hidden-id").val();
-        $("#msgId").val(msgId);
+        var cmtId = $td.children("#hidden-id").val();
+        $("#cmtId").val(cmtId);
     });
 });
     

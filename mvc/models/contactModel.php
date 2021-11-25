@@ -62,6 +62,13 @@ class ContactModel extends DB {
             return false;
         }
     }
+
+    public function ad_countMessage() {
+        $qr = "SELECT COUNT(*) as count FROM `message`";
+        $rows =  mysqli_query($this->con, $qr);
+        $row = mysqli_fetch_assoc($rows);
+        return json_encode($row); 
+    }
 }
 
 

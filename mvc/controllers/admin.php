@@ -17,8 +17,24 @@ class Admin extends Controller {
             "title"=>"Dashboard",
             "page"=>"admin"
         ];
-        $data = [];
+        $data = [
+
+        ];
         
+        $user = json_decode($this->userModel->ad_countUser(), true);
+        $product = json_decode($this->productsModel->ad_countProduct(), true);
+        $order = json_decode($this->productsModel->ad_countOrder(), true);
+        $news = json_decode($this->newsModel->ad_countNews(), true);
+        $message = json_decode($this->contactModel->ad_countMessage(), true);
+
+        $data = [
+            'user'=>$user['count'],
+            'product'=>$product['count'],
+            'order'=>$order['count'],
+            'news'=>$news['count'],
+            'message'=>$message['count']
+        ];
+
         $view_data = $info + $data;
         $this->view("master3", $view_data);
     }
@@ -114,5 +130,24 @@ class Admin extends Controller {
         $view_data = $info + $data;
         $this->view("master3", $view_data);
     }
+
+    public function comments() {
+        $info = [
+            "title"=>"Dashboard | Comments",
+            "page"=>"admin_comments"
+        ];
+        $data = [];
+
+        // fetching all contact data
+        // $qr_res = json_decode($this->contactModel->ad_getAllMessages(), true);
+
+        // $data = [
+        //     "qr_res"=>$qr_res
+        // ];
+
+        
+        $view_data = $info + $data;
+        $this->view("master3", $view_data);
+    }    
 }
 ?>

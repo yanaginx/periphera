@@ -214,6 +214,13 @@ class UserModel extends DB {
             return false;
         }
     }
+
+    public function ad_countUser() {
+        $qr = "SELECT COUNT(*) as count FROM `user`";
+        $rows =  mysqli_query($this->con, $qr);
+        $row = mysqli_fetch_assoc($rows);
+        return json_encode($row); 
+    }
 }
 
 ?>

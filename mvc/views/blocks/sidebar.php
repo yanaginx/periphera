@@ -42,7 +42,13 @@
           class="list-group-item list-group-item-action py-2 ripple <?php if ($data['page'] === 'admin_messages') echo 'active'?>"
           >
         <i class="fas fa-comments fa-fw me-3"></i><span>Messages</span>
-      </a>     
+      </a>
+      <a
+          href="./admin/comments"
+          class="list-group-item list-group-item-action py-2 ripple <?php if ($data['page'] === 'admin_comments') echo 'active'?>"
+          >
+        <i class="fas fa-quote-left fa-fw me-3"></i><span>Comments</span>
+      </a>      
     </div>
   </div>
 </nav>

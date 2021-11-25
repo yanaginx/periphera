@@ -75,6 +75,13 @@ class NewsModel extends DB {
             return false;
         }
     }
+
+    public function ad_countNews() {
+        $qr = "SELECT COUNT(*) as count FROM `news`";
+        $rows =  mysqli_query($this->con, $qr);
+        $row = mysqli_fetch_assoc($rows);
+        return json_encode($row); 
+    }    
 }
 
 ?>

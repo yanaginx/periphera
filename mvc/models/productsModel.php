@@ -243,6 +243,20 @@ class ProductsModel extends DB {
             return false;
         }
     }
+
+    public function ad_countProduct() {
+        $qr = "SELECT COUNT(*) as count FROM `product`";
+        $rows =  mysqli_query($this->con, $qr);
+        $row = mysqli_fetch_assoc($rows);
+        return json_encode($row); 
+    }
+
+    public function ad_countOrder() {
+        $qr = "SELECT COUNT(*) as count FROM `order`";
+        $rows =  mysqli_query($this->con, $qr);
+        $row = mysqli_fetch_assoc($rows);
+        return json_encode($row); 
+    }
 }
 
 ?>

@@ -284,7 +284,7 @@ class Products extends Controller {
                 "title"=>"Product Detail | Periphera",
                 "page"=>"product-detail",
                 "data"=>$this->productsModel->getProductDetail($proId),
-                "noti"=>$this->productsModel->countNumberProductOfUser(),
+                "noti"=>$this->productsModel->countNumberProductOfUser($data["id"]),
                 "comment"=>$this->productsModel->getComment($proId)
             ]);
         }
@@ -349,6 +349,19 @@ class Products extends Controller {
                 "title"=>"Dashboard | Orders",
                 "page"=>"admin_orders",
                 "qr_res"=>json_decode($this->productsModel->ad_getAllOrders(), true)
+            ]);
+        }
+    }
+
+    public function ad_delete_comment(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $cmtId =  $_POST['cmtId'];
+
+            $this->productsModel->ad_deleteComment($cmtId);
+            $this->view("master3", [
+                "title"=>"Dashboard | Comments",
+                "page"=>"admin_comments",
+                "qr_res"=>json_decode($this->productModel->ad_getAllComments(), true)
             ]);
         }
     }

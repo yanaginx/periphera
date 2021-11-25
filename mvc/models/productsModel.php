@@ -257,6 +257,32 @@ class ProductsModel extends DB {
         $row = mysqli_fetch_assoc($rows);
         return json_encode($row); 
     }
+
+    public function ad_getAllComments() {
+        $qr = "SELECT `comment`.id, `comment`.comment, `comment`.datetime, `product`.name, `user`.username
+        FROM `comment` JOIN `product`
+          ON `comment`.product_id = `product`.id
+                     JOIN `user`
+          ON `comment`.user_id = `user`.id;";
+        $rows =  mysqli_query($this->con, $qr);
+        $data_arr = array();
+        while ( $row = mysqli_fetch_assoc($rows) ) {
+            $data_arr[] = $row;
+        }
+        return json_encode($data_arr);        
+    }
+
+    public function ad_deleteComment($cmtId){
+        $qr = "DELETE FROM `comment` WHERE id = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('i', $cmtId);
+
+        if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

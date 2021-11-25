@@ -138,12 +138,12 @@ class Admin extends Controller {
         ];
         $data = [];
 
-        // fetching all contact data
-        // $qr_res = json_decode($this->contactModel->ad_getAllMessages(), true);
+        // fetching all comments data
+        $qr_res = json_decode($this->productsModel->ad_getAllComments(), true);
 
-        // $data = [
-        //     "qr_res"=>$qr_res
-        // ];
+        $data = [
+            "qr_res"=>$qr_res
+        ];
 
         
         $view_data = $info + $data;

@@ -65,7 +65,7 @@ class ProductsModel extends DB {
         return json_encode($data_arr);
     }
     public function productSaveOrder($username) {
-        $qr = "INSERT INTO `order`(`user_id`, `date`) VALUES (?,DATE(NOW()))";
+        $qr = "INSERT INTO `order`(`user_id`, `date`) VALUES (?,CURRENT_TIMESTAMP())";
         $stmt = $this->con->prepare($qr);
         $stmt->bind_param('s', $username);
 
@@ -176,7 +176,7 @@ class ProductsModel extends DB {
         return json_encode($data_arr);        
     }
 
-    public function ad_createProduct($category, $name, $description, $price, $image, $rating, $isFeatured) {
+    public function adcreateProduct($category, $name, $description, $price, $image, $rating, $isFeatured) {
         $qr = "INSERT INTO `product`(`category_id`, `name`, `description`, `date_added`, `price`, `image`, `rating`, `is_featured`) 
             VALUES (?,?,?,
             CURRENT_TIMESTAMP(), ?,?, ?, ?);";
@@ -206,6 +206,38 @@ class ProductsModel extends DB {
         $stmt->bind_param('i', $id);
 
         if ( $stmt->execute() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function ad_getAllOrders() {
+        $qr = "SELECT `order`.id, `user`.username, `order`.date, `product`.name, `order_contains_products`.prod_amount
+        FROM `order` JOIN `order_contains_products`
+          ON `order`.id = `order_contains_products`.order_id
+                     JOIN `user`
+          ON `order`.user_id = `user`.id
+                     JOIN `product`
+          ON `order_contains_products`.product_id = `product`.id;";
+        $rows =  mysqli_query($this->con, $qr);
+        $data_arr = array();
+        while ( $row = mysqli_fetch_assoc($rows) ) {
+            $data_arr[] = $row;
+        }
+        return json_encode($data_arr);        
+    }
+
+    public function ad_deleteOrder($orderId){
+        $qr = "DELETE FROM `order` WHERE id = ?;";
+        $stmt = $this->con->prepare($qr);
+        $stmt->bind_param('i', $orderId);
+
+        $qr2 = "DELETE FROM `order_contains_products` WHERE order_id = ?;";
+        $stmt2 = $this->con->prepare($qr2);
+        $stmt2->bind_param('i', $userId);
+
+        if ( $stmt->execute() && $stmt2->execute() ) {
             return true;
         } else {
             return false;

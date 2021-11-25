@@ -66,6 +66,13 @@ class Admin extends Controller {
         ];
         $data = [];
 
+        // fetching all order data
+        $qr_res = json_decode($this->productsModel->ad_getAllOrders(), true);
+
+        $data = [
+            "qr_res"=>$qr_res
+        ];
+
         
         $view_data = $info + $data;
         $this->view("master3", $view_data);

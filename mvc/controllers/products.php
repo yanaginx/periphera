@@ -273,5 +273,17 @@ class Products extends Controller {
         }
     }
 
+    public function ad_delete_order(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id = $_POST['orderId'];
+            $this->productsModel->ad_deleteOrder($id);
+            $this->view("master3", [
+                "title"=>"Dashboard | Orders",
+                "page"=>"admin_orders",
+                "qr_res"=>json_decode($this->productsModel->ad_getAllOrders(), true)
+            ]);
+        }
+    }
+
 }
 ?>

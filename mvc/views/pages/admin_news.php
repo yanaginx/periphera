@@ -33,7 +33,9 @@
         echo '<td>'.$row['title'].'</td>';
         echo '<td class="col-3">';
         echo '<input id="hidden-id" type="hidden" value='.$row["id"]." />";
+        echo '<input id="hidden-title" type="hidden" value='.$row["title"]." />";
         echo '<input id="hidden-content" type="hidden" value="'.$row["content"].'" />';
+        echo '<input id="hidden-image" type="hidden" value='.$row["image"]." />";
         echo '<a data-mdb-toggle="modal" class="view-btn" data-mdb-target="#viewModal"><i class="fas fa-search text-warning fa-1x mx-2"></i></a>';
         echo '<a data-mdb-toggle="modal" class="edit-btn" data-mdb-target="#editModal"><i class="fas fa-pencil-alt text-warning fa-1x mx-2"></i></a>';
         echo '<a data-mdb-toggle="modal" class="del-btn" data-mdb-target="#deleteModal"><i class="fas fa-trash-alt text-danger fa-1x mx-2"></i></a>';
@@ -157,15 +159,15 @@
       <input type="hidden" id="newsId-edit" name="newsId" />
       <div class="modal-body">
         <div class="form-outline mb-3">
-          <input type="text" id="title" name="title" class="form-control" />
+          <input type="text" id="title1" name="title" class="form-control" />
           <label class="form-label" for="name">Title</label>
         </div>
         <div class="form-outline mb-3">
-          <textarea class="form-control form-input" name="content" id="content" rows="6"></textarea>
+          <textarea class="form-control form-input" name="content" id="content1" rows="6"></textarea>
           <label class="form-label" for="description">Content</label>
         </div>
         <div class="form-outline mb-3">
-          <input type="text" id="image" name="image" class="form-control" />
+          <input type="text" id="image1" name="image" class="form-control" />
           <label class="form-label" for="price">Image URL</label>
         </div>
         <div class="mb-3">
@@ -238,6 +240,13 @@ $(document).ready(function() {
     $(".edit-btn").on("click", function() {
         $td = $(this).closest("td");
         var newsId = $td.children("#hidden-id").val();
+        var title = $td.children("#hidden-title").val();
+        var content = $td.children("#hidden-content").val();
+        var image = $td.children("#hidden-image").val();
+
+        document.getElementById("title1").value = title;
+        document.getElementById("content1").value = content;
+        document.getElementById("image1").value = image;
         $("#newsId-edit").val(newsId);
     });
     $(".del-btn").on("click", function() {

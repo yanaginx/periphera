@@ -31,7 +31,7 @@ class NewsModel extends DB {
     }
 
     public function ad_getAllArticles() {
-        $qr = "SELECT id, title, content FROM `news`;";
+        $qr = "SELECT id, title, content, image FROM `news`;";
         $rows =  mysqli_query($this->con, $qr);
         $data_arr = array();
         while ( $row = mysqli_fetch_assoc($rows) ) {

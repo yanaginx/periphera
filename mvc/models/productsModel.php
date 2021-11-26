@@ -139,9 +139,10 @@ class ProductsModel extends DB {
     }
 
     public function addComment($userId, $proId, $cmt){
+        $cmt_encoded = htmlentities($cmt, ENT_QUOTES);
         $qr = "INSERT INTO `comment`(`user_id`, `product_id`, `comment`, `datetime`) VALUES (?,?,?,CURRENT_TIMESTAMP())";
         $stmt = $this->con->prepare($qr);
-        $stmt->bind_param('iis', $userId, $proId, $cmt);
+        $stmt->bind_param('iis', $userId, $proId, $cmt_encoded);
 
         if ( $stmt->execute() ) {
             return true;

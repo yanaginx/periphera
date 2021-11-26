@@ -208,15 +208,16 @@ class Users extends Controller {
         ];
 
         if(isset($_POST['saveuser'])){
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = [
-                "fname" => $_POST['fname'],
-                "lname" => $_POST['lname'],
-                "email" => $_POST['email'],
-                "phone" => $_POST['phone'],
-                "address_1" => $_POST['address_1'],
-                "address_2" => $_POST['address_2'],
-                "zipcode" => $_POST['zipcode'],
-                "country" => $_POST['country']
+                "fname" => trim($_POST['fname']),
+                "lname" => trim($_POST['lname']),
+                "email" => trim($_POST['email']),
+                "phone" => trim($_POST['phone']),
+                "address_1" => trim($_POST['address_1']),
+                "address_2" => trim($_POST['address_2']),
+                "zipcode" => trim($_POST['zipcode']),
+                "country" => trim($_POST['country'])
             ];
             $this->userModel->updateUserData($_SESSION['username'], $data);
         }

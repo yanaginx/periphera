@@ -182,7 +182,7 @@ class ProductsModel extends DB {
             VALUES (?,?,?,
             CURRENT_TIMESTAMP(), ?,?, ?, ?);";
         $stmt = $this->con->prepare($qr);
-        $stmt->bind_param('sssisdi', $category, $name, $description, $price, $image, $rating, $isFeatured);
+        $stmt->bind_param('sssdsdi', $category, $name, $description, $price, $image, $rating, $isFeatured);
 
         if ( $stmt->execute() ) {
             return true;
@@ -193,7 +193,7 @@ class ProductsModel extends DB {
     public function ad_editProduct($id, $category, $name, $des, $price, $image, $rating, $feature) {
         $query = "UPDATE `product` SET `category_id`=?,`name`=?,`description`=?,`price`=?,`image`=?,`rating`=?,`is_featured`=? WHERE id = ?";
         $stmt = $this->con->prepare($query);
-        $stmt->bind_param('sssisdii', $category, $name, $des, $price, $image, $rating, $feature, $id);
+        $stmt->bind_param('sssdsdii', $category, $name, $des, $price, $image, $rating, $feature, $id);
         if ( $stmt->execute() ) {
             return true;
         } else {

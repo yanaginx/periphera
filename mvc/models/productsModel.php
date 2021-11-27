@@ -177,7 +177,7 @@ class ProductsModel extends DB {
         return json_encode($data_arr);        
     }
 
-    public function adcreateProduct($category, $name, $description, $price, $image, $rating, $isFeatured) {
+    public function ad_createProduct($category, $name, $description, $price, $image, $rating, $isFeatured) {
         $qr = "INSERT INTO `product`(`category_id`, `name`, `description`, `date_added`, `price`, `image`, `rating`, `is_featured`) 
             VALUES (?,?,?,
             CURRENT_TIMESTAMP(), ?,?, ?, ?);";

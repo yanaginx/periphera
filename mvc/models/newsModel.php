@@ -7,7 +7,7 @@ class NewsModel extends DB {
     }
 
     public function getAllArticles() {
-        $qr = "SELECT id, title FROM news";
+        $qr = "SELECT id, title, content, `image` FROM news";
         $rows =  mysqli_query($this->con, $qr);
         $data_arr = array();
         while ( $row = mysqli_fetch_assoc($rows) ) {

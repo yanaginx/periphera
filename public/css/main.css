@@ -92,6 +92,12 @@ body {
 }
 /* End about */
 
+/* Article */
+.article-content {
+  max-width: 750px;
+}
+/* End article */
+
 /* Contact form */
 .gradient-custom {
   background-image: -webkit-linear-gradient(left, #5A4AE3, #59FBDA);

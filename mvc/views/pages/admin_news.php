@@ -115,10 +115,6 @@
           <input type="text" name = "image" id="image" class="form-control" />
           <label class="form-label" for="price">Image URL</label>
         </div>
-        <div class="mb-3">
-          <label class="form-label" for="imageUpload">Image</label>
-          <input type="file" class="form-control" id="imageUpload" />
-        </div>
       </div>
 
       <div class="modal-footer">
@@ -169,10 +165,6 @@
         <div class="form-outline mb-3">
           <input type="text" id="image1" name="image" class="form-control" />
           <label class="form-label" for="price">Image URL</label>
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="imageUpload">Image</label>
-          <input type="file" class="form-control" id="imageUpload" />
         </div>
       </div>
 

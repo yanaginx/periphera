@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2021 at 08:46 AM
+-- Generation Time: Nov 27, 2021 at 11:07 AM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -107,7 +107,10 @@ CREATE TABLE `news` (
 
 INSERT INTO `news` (`id`, `title`, `content`, `image`) VALUES
 (10, 'aaaa', 'haha lol sadge', '/'),
-(13, 'asasas', 'asas asa s as as aa s a sas as a sa sa asas asa s as as aa s a sas as a sa sa asas asa s as as aa s a sas as a sa sa asas asa s as as aa s a sas as a sa sa ', '');
+(13, 'asasas', 'asas asa s as as aa s a sas as a sa sa asas asa s as as aa s a sas as a sa sa asas asa s as as aa s a sas as a sa sa asas asa s as as aa s a sas as a sa sa ', ''),
+(15, 'The Golden Age of Lalaounis', 'Amongst jewellery lovers, the name Lalaounis has almost mythical status. From the sun-bleached land of gods and olive groves, the Lalaounis we know today was founded in Greece in 1941 when the young Ilias Lalaounis was asked to take over the three-generation old family business during the war years.  Ilias had no formal training in jewellery making but he was a competent businessman and well-read intellectual who loved history. For over a decade he ran the business much as it was, producing generic jewels with little reference to his homeland. In the late 1950’s the country opened up to tourism and the glamour of Onassis and Jackie O lured the world to its sparkling sapphire waters and island idylls. These visitors to the Hellenic republic wanted to take home a jewel steeped in the country’s history.\n\nThe unmistakable Lalaounis look of all-gold jewels hand-hammered into evocative and often outsize ancient forms was inspired by Ilias’ love of antiquities. As an avid historian, his first port of call was the museums of Greece from where he copied designs and techniques bringing the beauty of antique artefacts to life in 18-carat and 22-carat gold. Lalaounis’ workshop in Athens, was at the foot of the Acropolis and benefitted from the rich tradition of jewellery-making of this city that sits at the heart of Mediterranean civilisation. The jewels proved to be a huge success but not one to stand still, Ilias refined his approach and embarked on a journey of seeing art as an inspiration be it Greek, Minoan, Hellenistic, Classical, Byzantine or even from beyond. From the classic Hellenistic Lion Head bracelet to the starkly elegant serpent bangles, Ilias Lalaounis forged a look that put Greece on the jewellery map.\n\nHand-hammering is the technique that the house is most famous for and the dint of small hammers echoes around the workshop as repeated strikes of the rounded head creates a rich pattern of soft indentations as favoured by the Ancient Greek goldsmiths. Granulation is the skill of placing small beads onto surfaces to create intricate highly textured patterns and brought up to date in collections such as Glory of Byzantium. Even older is filigree work, which uses fine threads of gold and grains to create light as lace open-work jewels or to build up elaborate patterns on a surface.  The Epirus earrings, chains and rings use an Ancient Roman technique of piercing gold called opus interassile for a fluid and feather-light big look. The Hellenistic tradition of weaving gold is deployed to create supple hand made chains such as the Hercules knot from the Hellenistic collection. Gold is embossed using the repoussé technique that dates back to the Bronze age to achieve complex, multi-level patterns as seen on the iconic animal jewels. Gemstones and diamonds are employed more liberally than in the early days of the firm, but still chosen with an eye to the past as a complement to the gold and often in soft cabochon forms and then carefully hand-set as they would have been centuries ago. But the shapes are more delicate, easier to mix and match and stack and appealing to a new generation of Lalaounis fans. With ten children between the four daughters, it is safe to say that the sisters understand a wide range of tastes and budgets.\n\n‘From beach to work to dinner under the Athens or New York sky, our jewellery works and  is designed for women to easily wear all day long, dressing it up or down according to everyone\'s individual style,’ explains Demetra Lalaounis, Director of International Business. For over 80 years, the bold forms of Lalaounis jewels are now recognised the world over, confirming that Ilias’ vision was on the mark. It’s not just the styles of the jewels themselves that evoke the arc of Greek history from Neolithic starkness, Classical Greek elegance, the opulence of Theodora’s reign, Byzantine splendour to Hellenic glamour, but the very materials and techniques that imbue them with that special Greek touch that makes Lalaounis so very unique and desirable. ', 'https://bn1304files.storage.live.com/y4mUCjUASgBDsIwPWm5rH4pU4Jx-yseeGPA4Z09QOdKc1b981jV2hGbhdCap_x-iQg3p90cgxbJuuPz7o9IhALgT52K79Xm6ssYJkk_TQwhJQXGc60JgeuCv5SMLLDGw0-pADjzgjpRWs_T2ghAsIc-OuWvnWAVd49QV4xhSLhWy7q1-_Qj6LWGkgB_3fchsO3C?width=332&height=222&c'),
+(16, 'How Pomellato\'s Nudo became an icon over two decades', 'The question of what makes an icon is one that designers around the world strive to answer. Elusive and unpredictable, it is the passage of years or decades alone that grants this honour. A shining example of a time-tested design-great is Pomellato’s Nudo ring that this year celebrates its 20th anniversary. One glance at the latest arrivals and the Nudo looks as fresh as it did way back in 2001.\r\n\r\nThis witty little ring began life in a modest way, a bit of an insider joke about the state of the world in the early Noughties at the height of the vogue for ostentation and opulence.  The rebellious, unfussy Nudo with its vibrantly bright square gemstone and smooth lines was a joyous parody of the ubiquitous all-white solitaire ring.\r\n\r\nThe original five Nudo rings featured bright blocks of garnet, aquamarine, peridot, iolite and red tourmaline and to the delighted surprise of the team at Casa Pomellato, they instantly sold out.  Named Nudo for the Italian for naked or bare, the square gemstone is free from claws and appears to float on the finger thanks to a clever system of concealed fixings in the collet of the ring.   This masterpiece of abbreviation, was modernist in its inclination yet deeply rooted in the traditional craft of goldsmithing and it takes four days to make by hand each Nudo ring the house’s Milanese workshop.\r\n\r\nSince its instant success, the Nudo has been adorned with 35 different gemstones, many of them rarely seen in the world of fine jewellery.  New techniques such as the Gelé frosty finish or stone doublets add to the ever expanding range of Nudo offerings that span from zesty greens to glossy pinks and every colour in between.\r\n\r\nAs it has grown up, the Nudo includes earrings, pendants and now even a new range of bracelets and this year the addition of chocolate coloured gemstones. CEO of Pomellato Sabina Belli says: “Nudo epitomises the visionary mission of Pomellato which was born to create prêt-à-porter jewels for the emancipated woman. It was a revolutionary idea. And Nudo fully expresses the strength of this vision: quintessentially feminine, strikingly simple, Nudo is the perfect ironic answer to the solitaire ring, inclusive in the array of naked gems it uses, powerful in its essential design, Nudo is a true icon. Multifaceted, truthful, just like the Pomellato women.” Unorthodox yet always true to its original spirit, the Nudo has travelled through two decades virtually unchanged yet as powerful as the day it was born.', 'https://bn1304files.storage.live.com/y4mrcKfQ8ycNIwzPZK2BCCD_BQZdMSSiFZNhEqHEH5Npt5raR4X9hHneE_XyC4dGyMd3ET3f009irzLyiDSqJvsY6KkjL3c6sFIyBQT6yQt_eeWziq3Ddwgg57PQbOBVNuFGn1YyGqUxK9blW3udDpucbZxPosJHdYNq_HPOqLH8QH1CWDGteinprUIY14T_nFa?width=455&height=304&c'),
+(17, 'Liquid luxury: Chanel’s Jewellery Eternal Collection No. 5', 'The number 5 and perfume drops are the only two motifs in Chanel’s new no.5  Eternal Jewellery Collection crafted in diamonds and white gold. The jewels are inspired by the famous fragrance created by Mademoiselle Chanel in 1921 and celebrate a centenary of success of perhaps the most famous perfume in the world.\r\n\r\nSurprisingly, the digit 5 perfectly lends itself to jewellery thanks to its pleasing combination of vertical and round forms.  Although Gabrielle Chanel did not use the number 5 herself in jewels, she was instinctively attracted to the force and versatility of its incongruous form. The number 5 was the superstitious designer’s lucky number, which is why she chose it as the name for her first perfume. And it looks like luck was on her side as the scent reaches its 100th anniversary and lies at the core of the success of the maison.\r\n\r\nChanel has also launched the No 5 high jewellery collection based around the same fragrance of one-of-a-kind jewels featuring the famous fragrance bottle, its stopper and its olfactory make-up. \r\n\r\nThe graphic force of the number 5 is most evident in the ring where it is set with diamonds and lies flush in a smooth band of gold. Minimal yet opulent, the impact is enhanced by the sizeable diamond that floats at its centre. The mood is young and carefree, as easy to wear as a splash of perfume that lingers on the skin with a glistening lightness.', 'https://bn1304files.storage.live.com/y4mgZHUdtYsYOHxcf5gfvIxWBvhCLunaeENCP6Cbnhvfq2atZb8DUSDmSkPEF75sXFay0nl5DOVOA0GcPScOx0uLqoEVwCwhyoKFoJ8_v3l3IJh-vvlSBLe-CnCKSg8Ik4e7zM09myvnEQFPYPS0rORlVFD0Zd6h5twI-Mf9Y1sBX7JQj2uKYiWfr4JIJrbzv7k?width=660&height=660&c');
 
 -- --------------------------------------------------------
 
@@ -243,7 +246,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `address_1`, `address_2`, `zipcode`, `country`, `fname`, `lname`, `phone`) VALUES
 (1, 'admin', '$2y$10$/YSAjdpUgWTyZQz2fkjwS.2LsK8RwZw3GJJL17fyuE0ZRry4ussIi', 'admin@periphera.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (12, 'shinyo', '$2y$10$DSFVay15T95GStyp1nvmW.dPjvQffV3IRpmDSOt1atIGVowlSZQqy', 'shinyo@periphera.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(14, 'pepegaswiper69', '$2y$10$.n.ZA5tsH57DQNBXqt02Kubfh8Q3ivr16HGVfSQNyc9Lk2BniXlAi', 'a@b.c', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(14, 'pepegaswiper69', '$2y$10$.n.ZA5tsH57DQNBXqt02Kubfh8Q3ivr16HGVfSQNyc9Lk2BniXlAi', 'a@b.c', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 'johnd', '$2y$10$aKKVW5Nm7NC81L9gEXoRG.m/zfs34siqe.Y1y3iwctrTG3Ipd49w2', 'johndoe@example.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -263,7 +267,8 @@ CREATE TABLE `users_have_roles` (
 INSERT INTO `users_have_roles` (`user_id`, `role_id`) VALUES
 (1, 1),
 (12, 2),
-(14, 2);
+(14, 2),
+(15, 2);
 
 --
 -- Indexes for dumped tables
@@ -371,7 +376,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `order`
@@ -395,7 +400,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

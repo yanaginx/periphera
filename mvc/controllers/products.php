@@ -423,8 +423,12 @@ class Products extends Controller {
             $price =  $_POST['price'];
             $img = $_POST['image'];
             $rating =  $_POST['rating'];
-            $feature = $_POST['isFeatured'];
-            echo $feature;
+            if(isset($_POST['isFeatured'])){
+                $feature = $_POST['isFeatured'];
+            }
+            else{
+                $feature = 0;
+            }
             $this->productsModel->ad_createProduct($category, $name, $description, $price, $img, $rating, $feature);
             $this->view("master3", [
                 "title"=>"Dashboard | Products",
@@ -443,7 +447,13 @@ class Products extends Controller {
             $price =  $_POST['price1'];
             $img = $_POST['image1'];
             $rating =  $_POST['rating1'];
-            $feature = $_POST['isFeatured1'];
+            if(isset($_POST['isFeatured1'])){
+                $feature = $_POST['isFeatured1'];
+            }
+            else{
+                $feature = 0;
+            }
+            echo $feature;
             $this->productsModel->ad_editProduct($id, $category, $name, $description, $price, $img, $rating, $feature);
             $this->view("master3", [
                 "title"=>"Dashboard | Products",

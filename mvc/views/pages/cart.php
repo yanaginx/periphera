@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./public/css/cart.css">
 <link rel="stylesheet" href="./public/css/products.css">
 
-<div class="small-container-col4 cart-page">
+<div class="small-container-col4 cart-page mb-5">
     <table>
       <tr>
         <th>Product</th>
@@ -45,7 +45,7 @@
       ?>
     </table>
 
-    <div class="total-price">
+    <div class="total-price my-3">
       <table>
         <tr>
           <td>Subtotal</td>

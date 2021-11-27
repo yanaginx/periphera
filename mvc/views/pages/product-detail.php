@@ -49,13 +49,13 @@
                   echo '<input type="hidden" name="nameProduct" value="'.$data["name"].'">';
                   echo '<input type="hidden" name="priceProduct" value="'.$data["price"].'">';
                   echo '<input type="hidden" name="idProduct" value="'.$data["id"].'">';
-                  echo '<button href="./products/addtocart" class="btn" style="margin:unset;" 
+                  echo '<button href="./products/addtocart" class="btn btn-outline-black" style="margin:unset;" 
                         onclick="document.getElementsByClassName("form-addtocart").submit();"
                         type="submit">Add to cart</button>';
                   echo '</form>';
                 }
                 else{
-                  echo '<a href="./users/login" class="btn" style="margin:unset;">Add to cart</a>';
+                  echo '<a href="./users/login" class="btn btn-outline-black" style="margin:unset;">Add to cart</a>';
                 }
                 
                 echo '<h5 style="margin:16px 0;">

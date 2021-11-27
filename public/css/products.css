@@ -2,7 +2,7 @@
 html {
   scroll-behavior: smooth;
 }
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -29,14 +29,14 @@ nav ul {
 nav ul li {
   display: inline-block;
   margin-right: 20px;
-}
+} */
 a {
   text-decoration: none;
   color: #555;
 }
-p {
+/* p {
   color: #555;
-}
+} */
 /* ------------- */
 
 
@@ -74,7 +74,7 @@ p {
   padding-right: 25px;
 }
 
-.row {
+/* .row {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -95,7 +95,6 @@ p {
   font-size: 50px;
   line-height: 60px;
   margin: 25px 0;
-  /* text-align: center; */
 }
 
 .col-3 {
@@ -105,8 +104,6 @@ p {
 }
 .col-3 img {
   width: 100%;
-  /* display: block; */
-  /* padding: 50px 0; */
   margin: auto;
 }
 .col-3 p {
@@ -131,32 +128,35 @@ p {
 .col-4:hover {
   transform: translateY(-5px);
 }
-
+*/
 .col-12:hover{
   transform: translateY(-5px);
 } 
-.col-sm-6:hover{
+/* .col-sm-6:hover{
   transform: translateY(-5px);
 } 
 .col-lg-4:hover {
   transform: translateY(-5px);
-}
+} */
 /* ------------- */
 
 
 /* --UTILITIES-- */
 
-.btn {
+/* .btn {
   display: inline-block;
   background: #5A4AE3;
   color: #EFEFEF;
   padding: 8px 30px;
   border-radius: 30px;
   transition: background 0.5s;
-}
-.btn:hover {
+} */
+/* .btn:hover {
   background: #494454;
   color: white;
+} */
+.btn:hover {
+  background: #dfdfdf4f;
 }
 .categories {
   margin: 70px 0;
@@ -364,7 +364,7 @@ nav .fa-bars {
   margin: 0 50px;
 }
 select {
-  border: 1px solid #5A4AE3;
+  /* border: 1px solid #5A4AE3; */
   padding: 5px;
 }
 select:focus {

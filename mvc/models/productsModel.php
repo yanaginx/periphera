@@ -270,7 +270,7 @@ class ProductsModel extends DB {
         while ( $row = mysqli_fetch_assoc($rows) ) {
             $data_arr[] = $row;
         }
-        return json_encode($data_arr);        
+        return json_encode($data_arr);
     }
 
     public function ad_deleteComment($cmtId){
@@ -283,6 +283,16 @@ class ProductsModel extends DB {
         } else {
             return false;
         }
+    }
+
+    public function getFeaturedProduct() {
+        $qr = "SELECT * FROM `product` WHERE `is_featured` = 1 ORDER BY RAND() LIMIT 1;";
+        $rows =  mysqli_query($this->con, $qr);
+        $data_arr = array();
+        while ( $row = mysqli_fetch_assoc($rows) ) {
+            $data_arr[] = $row;
+        }
+        return json_encode($data_arr);
     }
 }
 

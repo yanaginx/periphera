@@ -19,7 +19,7 @@ class News extends Controller{
 
     function details($id) {
         // view the articles
-        $this->view("master1", [
+        $this->view("master4", [
             "title"=>"Article's content",
             "page"=>"news",
             "article"=>$this->newsModel->getArticle($id)

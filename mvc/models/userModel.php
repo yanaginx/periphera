@@ -74,7 +74,7 @@ class UserModel extends DB {
     }
 
     public function regCheckUsername ( $username ) {
-        $usernameValidation = '/^[a-zA-Z0-9]+$/';
+        $usernameValidation = '/^[a-zA-Z0-9]{3,255}$/';
         if(!preg_match($usernameValidation, $username)) {
             // if not empty, with only number and english char
             return json_encode("un_invalid");

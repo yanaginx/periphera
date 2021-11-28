@@ -33,7 +33,7 @@
         echo '<td>'.$row['title'].'</td>';
         echo '<td class="col-3">';
         echo '<input id="hidden-id" type="hidden" value='.$row["id"]." />";
-        echo '<input id="hidden-title" type="hidden" value='.$row["title"]." />";
+        echo '<input id="hidden-title" type="hidden" value="'.$row["title"].'" />';
         echo '<input id="hidden-content" type="hidden" value="'.$row["content"].'" />';
         echo '<input id="hidden-image" type="hidden" value='.$row["image"]." />";
         echo '<a data-mdb-toggle="modal" class="view-btn" data-mdb-target="#viewModal"><i class="fas fa-search text-warning fa-1x mx-2"></i></a>';

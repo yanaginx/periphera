@@ -10,85 +10,36 @@ class Products extends Controller {
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             if($_POST['sort'] == 1){
                 $data = $this->productsModel->getDataSortByPrice();
-                if(isset($_SESSION["username"])){
-                    $userID = $this->productsModel->getUserID($_SESSION["username"]);
-                    $data1 = json_decode($userID, true);
-                    $count = 0;
-                    foreach($data1 as $data1){
-                        $count = $this->productsModel->countNumberProductOfUser($data1["id"]);
-                    }
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>1,
-                        "data"=>$data, 
-                        "noti"=>$count
-                    ]);
-                }
-                else{
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>1,
-                        "data"=>$data, 
-                        "noti"=>0
-                    ]);
-                }
-                
             }
             else if($_POST['sort'] == 2){
                 $data = $this->productsModel->getDataSortByRating();
-                if(isset($_SESSION["username"])){
-                    $userID = $this->productsModel->getUserID($_SESSION["username"]);
-                    $data1 = json_decode($userID, true);
-                    $count = 0;
-                    foreach($data1 as $data1){
-                        $count = $this->productsModel->countNumberProductOfUser($data1["id"]);
-                    }
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>1,
-                        "data"=>$data, 
-                        "noti"=>$count
-                    ]);
-                }
-                else{
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>1,
-                        "data"=>$data, 
-                        "noti"=>0
-                    ]);
-                }
             }
             else if($_POST['sort'] == 0){
                 $data = $this->productsModel->getData();
-                if(isset($_SESSION["username"])){
-                    $userID = $this->productsModel->getUserID($_SESSION["username"]);
-                    $data1 = json_decode($userID, true);
-                    $count = 0;
-                    foreach($data1 as $data1){
-                        $count = $this->productsModel->countNumberProductOfUser($data1["id"]);
-                    }
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>1,
-                        "data"=>$data, 
-                        "noti"=>$count
-                    ]);
+            }
+            if(isset($_SESSION["username"])){
+                $userID = $this->productsModel->getUserID($_SESSION["username"]);
+                $data1 = json_decode($userID, true);
+                $count = 0;
+                foreach($data1 as $data1){
+                    $count = $this->productsModel->countNumberProductOfUser($data1["id"]);
                 }
-                else{
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>1,
-                        "data"=>$data, 
-                        "noti"=>0
-                    ]);
-                }
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>1,
+                    "data"=>$data, 
+                    "noti"=>$count
+                ]);
+            }
+            else{
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>1,
+                    "data"=>$data, 
+                    "noti"=>0
+                ]);
             }
         }
         else{
@@ -162,84 +113,36 @@ class Products extends Controller {
        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             if($_POST['sort'] == 1){
                 $data = $this->productsModel->getDataSortByPrice();
-                if(isset($_SESSION["username"])){
-                    $userID = $this->productsModel->getUserID($_SESSION["username"]);
-                    $data1 = json_decode($userID, true);
-                    $count = 0;
-                    foreach($data1 as $data1){
-                        $count = $this->productsModel->countNumberProductOfUser($data1["id"]);
-                    }
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>"".$page,
-                        "data"=>$data, 
-                        "noti"=>$count
-                    ]);
-                }
-                else{
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>"".$page,
-                        "data"=>$data, 
-                        "noti"=>0
-                    ]);
-                }
             }
             else if($_POST['sort'] == 2){
                 $data = $this->productsModel->getDataSortByRating();
-                if(isset($_SESSION["username"])){
-                    $userID = $this->productsModel->getUserID($_SESSION["username"]);
-                    $data1 = json_decode($userID, true);
-                    $count = 0;
-                    foreach($data1 as $data1){
-                        $count = $this->productsModel->countNumberProductOfUser($data1["id"]);
-                    }
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>"".$page,
-                        "data"=>$data, 
-                        "noti"=>$count
-                    ]);
-                }
-                else{
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>"".$page,
-                        "data"=>$data, 
-                        "noti"=>0
-                    ]);
-                }
             }
             else if($_POST['sort'] == 0){
                 $data = $this->productsModel->getData();
-                if(isset($_SESSION["username"])){
-                    $userID = $this->productsModel->getUserID($_SESSION["username"]);
-                    $data1 = json_decode($userID, true);
-                    $count = 0;
-                    foreach($data1 as $data1){
-                        $count = $this->productsModel->countNumberProductOfUser($data1["id"]);
-                    }
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>"".$page,
-                        "data"=>$data, 
-                        "noti"=>$count
-                    ]);
+            }
+            if(isset($_SESSION["username"])){
+                $userID = $this->productsModel->getUserID($_SESSION["username"]);
+                $data1 = json_decode($userID, true);
+                $count = 0;
+                foreach($data1 as $data1){
+                    $count = $this->productsModel->countNumberProductOfUser($data1["id"]);
                 }
-                else{
-                    $this->view("master1", [
-                        "title"=>"Products | Periphera",
-                        "page"=>"products",
-                        "numberPage"=>"".$page,
-                        "data"=>$data, 
-                        "noti"=>0
-                    ]);
-                }
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>"".$page,
+                    "data"=>$data, 
+                    "noti"=>$count
+                ]);
+            }
+            else{
+                $this->view("master1", [
+                    "title"=>"Products | Periphera",
+                    "page"=>"products",
+                    "numberPage"=>"".$page,
+                    "data"=>$data, 
+                    "noti"=>0
+                ]);
             }
         }
         else{

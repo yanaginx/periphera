@@ -10,7 +10,7 @@
       </tr>
       <?php
       $total = 0.00;
-      if(isset($data["data"])){
+      if(isset($data["data"]) && $data["data"] != 0){
         $data = json_decode($data["data"], true);
         $count = 0;
         foreach($data as $data){

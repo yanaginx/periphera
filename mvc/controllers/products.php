@@ -271,30 +271,40 @@ class Products extends Controller {
             if(isset($_POST["productIdRemove"])){
                 $this->productsModel->deleteOrder($_POST["productIdRemove"]);
             } 
-            $userID = $this->productsModel->getUserID($_SESSION["username"]);
-            $data = json_decode($userID, true);
-                foreach($data as $data){
-                    $temp = $data["id"];
-                }
-            $this->view("master1", [
-                "title"=>"Product Detail | Periphera",
-                "page"=>"cart",
-                "data"=>$this->productsModel->getCart($temp)
-            ]);
+            if(isset($_SESSION["username"])){
+                $userID = $this->productsModel->getUserID($_SESSION["username"]);
+                $data = json_decode($userID, true);
+                    foreach($data as $data){
+                        $temp = $data["id"];
+                    }
+                $this->view("master1", [
+                    "title"=>"Product Detail | Periphera",
+                    "page"=>"cart",
+                    "data"=>$this->productsModel->getCart($temp)
+                ]);
+            }
         }
         else{
-            $userID = $this->productsModel->getUserID($_SESSION["username"]);
-            $data = json_decode($userID, true);
-                foreach($data as $data){
-                    $temp = $data["id"];
-                }
-            $this->view("master1", [
-                "title"=>"Product Detail | Periphera",
-                "page"=>"cart",
-                "data"=>$this->productsModel->getCart($temp)
-            ]);
+            if(isset($_SESSION["username"])){
+                $userID = $this->productsModel->getUserID($_SESSION["username"]);
+                $data = json_decode($userID, true);
+                    foreach($data as $data){
+                        $temp = $data["id"];
+                    }
+                $this->view("master1", [
+                    "title"=>"Product Detail | Periphera",
+                    "page"=>"cart",
+                    "data"=>$this->productsModel->getCart($temp)
+                ]);
+            }
+            else{
+                $this->view("master1", [
+                    "title"=>"Product Detail | Periphera",
+                    "page"=>"cart",
+                    "data"=>0
+                ]);
+            }
         }
-        
     }
 
     public function comment(){

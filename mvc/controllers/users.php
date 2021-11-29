@@ -137,7 +137,7 @@ class Users extends Controller {
                 if ( json_decode($this->userModel->regCheckUsername($data["username"])) === "un_existed" ) {
                     $data["usernameError"] = "Username existed";
                 } elseif ( json_decode($this->userModel->regCheckUsername($data["username"])) === "un_invalid" ) {
-                    $data["usernameError"] = "Username can only contain letters and numbers.";
+                    $data["usernameError"] = "Username is at least 3 characters long, can only contain letters and numbers.";
                 }
 
                 // validate email

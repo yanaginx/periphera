@@ -23,7 +23,7 @@ $(document).ready(function() {
             }
             else if (resp === "un_invalid") {
                 $('#un-helper').hide();
-                $('#un-invalid').html("Username can only contain letters and numbers.");
+                $('#un-invalid').html("Username is at least 3 characters long, can only contain letters and numbers.");
                 $('#un-invalid').show();
                 $('#un-validate').hide();
                 $('#username').addClass('is-invalid');

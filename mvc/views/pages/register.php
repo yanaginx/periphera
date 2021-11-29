@@ -25,7 +25,7 @@
                   <div id="un-validate" class="form-text fw-bold mb-1"><?php echo $data["usernameError"]; ?></div>
                   <!-- <div id="un-valid" class="valid-feedback feedback-pad">Looks good!</div> -->
                   <div id="un-invalid" class="invalid-feedback feedback-pad mb-3"></div>
-                  <div id="un-helper" class="form-text mb-3">Username contains only letters and numbers</div>
+                  <div id="un-helper" class="form-text mb-3">Username is at least 3 characters long, only contains letters and numbers.</div>
                   <!-- Password input -->
                   <div class="form-outline">
                     <input required type="password" id="password" name="password" class="form-control form-control-lg" />

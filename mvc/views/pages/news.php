@@ -52,6 +52,7 @@ if ( isset($data["article"]) ) :
     <p class="mb-5"> <?= nl2br($article["content"]) ?> </p>
   </div>
 <?php endforeach; ?>
-<?php endif; ?>
+<?php else: ?>
   <div class="fs-lg display-6 text-center my-5">ARTICLE NOT FOUND</div>
+<?php endif; ?>
 <?php endif; ?>

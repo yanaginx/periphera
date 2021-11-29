@@ -22,7 +22,10 @@ class NewsModel extends DB {
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $stmt_result = $stmt->get_result();
-
+        if ($stmt_result == false) {
+            return json_encode("no_article_found");
+        }
+        
         $data_arr = array();
         while ( $row = $stmt_result->fetch_assoc() ) {
             $data_arr[] = $row;

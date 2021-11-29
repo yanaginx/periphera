@@ -8,8 +8,12 @@
   <title> 
     <?php 
       if ( isset($data["article"]) ) { 
-        $article = json_decode($data["article"], true); 
-        echo $article[0]["title"]; 
+        $article = json_decode($data["article"], true);
+        if (!empty($article)) {
+          echo $article[0]["title"];
+        } else {
+          echo "Article not found";
+        }
       } else {
         echo $data['title'];
       }

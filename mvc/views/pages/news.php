@@ -43,7 +43,8 @@ if ( isset($data["article"]) ) :
 ?>
 <?php 
   $articles = json_decode($data["article"], true);
-  foreach ($articles as $article) :
+  if (!empty($articles)) :
+    foreach ($articles as $article) :
 ?>
   <div class="container-lg mx-auto article-content">
     <h2 class="my-5 text-center"><?= $article["title"] ?></h3>
@@ -51,4 +52,6 @@ if ( isset($data["article"]) ) :
     <p class="mb-5"> <?= nl2br($article["content"]) ?> </p>
   </div>
 <?php endforeach; ?>
+<?php endif; ?>
+  <div class="fs-lg display-6 text-center my-5">ARTICLE NOT FOUND</div>
 <?php endif; ?>

@@ -10,13 +10,17 @@ Using XAMPP
 - Hopefully some page with a simple HOMEPAGE text will appear on your browser
 - If you are gonna deploy this on some server, make sure to change the `<base>` tag with your preferred base dir, I haven't done it yet so no further instruction on that (maybe later xD)
 
+Default admin info: 
 
+username: admin 
+
+password: eSFe#bF7t!>U222&
 
 TO DO:
 
-- [ ] Add homepage's layout
+- [x] ~~Add homepage's layout~~
 - [x] ~~Add contact us page's layout~~
 - [x] ~~Add products to database and products page's layout~~
-- [ ] Add news' article to database and news page's layout
-- [ ] Add admin control panel for CRUD
-- [ ] More features to come, haven't think of anything else yet
+- [x] ~~Add news' article to database and news page's layout~~
+- [x] ~~Add admin control panel for CRUD~~
+- [x] ~~More features to come, haven't think of anything else yet~~
